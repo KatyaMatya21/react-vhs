@@ -8,6 +8,6 @@ export const RestaurantTabsButton = ({ active, onRestaurantChange, restaurant })
   }
 
   return (
-    <button className={active ? "button button--active" : "button"} key={id} type={"button"} onClick={() => onRestaurantChange(id)}>{name}</button>
+    <button className={active ? "button button--active" : "button"} type={"button"} onClick={() => onRestaurantChange(id)}>{name}</button>
   );
 };
