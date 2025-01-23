@@ -12,7 +12,7 @@ export const RestaurantInfo = ({ restaurant }) => {
     <div className='restaurant'>
       <h2 className='main-title'>{name}</h2>
       {Boolean(menu.length) && <Menu menu={menu} />}
-      <Reviews reviews={reviews} />
+      {Boolean(reviews.length) && <Reviews reviews={reviews} />}
     </div>
   );
 };
