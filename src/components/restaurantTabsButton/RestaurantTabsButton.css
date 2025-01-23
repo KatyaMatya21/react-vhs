@@ -1,0 +1,15 @@
+.button {
+  display: block;
+  padding: 10px;
+
+  border: 2px solid #cccccc;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button--active {
+  border: 2px solid greenyellow;
+  background-color: greenyellow;
+}
