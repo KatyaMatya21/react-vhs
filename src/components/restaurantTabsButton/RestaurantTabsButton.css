@@ -6,8 +6,7 @@
   background-color: #eeeeee;
 }
 
-.button:hover,
-.button:focus {
+.button:hover {
   background-color: #cccccc;
 
   cursor: pointer;
