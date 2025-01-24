@@ -1,4 +1,4 @@
-import { Counter } from "../counter/Counter";
+import { DishCounter } from "../dishCounter/DishCounter";
 
 export const Dish = ({ position }) => {
   const { name, price, ingredients } = position;
@@ -13,7 +13,7 @@ export const Dish = ({ position }) => {
           </li>
         ))}
       </ul>
-      <Counter/>
+      <DishCounter/>
     </div>
   );
 };

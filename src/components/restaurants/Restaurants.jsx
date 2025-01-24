@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { RestaurantTabs } from "../restaurantTabs/RestaurantTabs.jsx";
 import { RestaurantInfo } from "../restaurantInfo/RestaurantInfo.jsx";
+import { ReviewForm } from "../reviewForm/ReviewForm.jsx";
 
 export const Restaurants = ({ restaurants }) => {
   const [restaurantActiveId, setRestaurantActiveId] = useState(restaurants[0].id);
@@ -19,6 +20,8 @@ export const Restaurants = ({ restaurants }) => {
     <>
       <RestaurantTabs activeRestaurantId={restaurantActiveId} onRestaurantChange={onRestaurantChange} restaurants={restaurants} />
       {restaurantActiveId && foundRestaurant && <RestaurantInfo restaurant={foundRestaurant} />}
+
+      <ReviewForm />
     </>
   );
 };
