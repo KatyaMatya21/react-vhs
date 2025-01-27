@@ -3,9 +3,12 @@
   padding: 10px;
 
   border: 2px solid #cccccc;
+  background-color: #eeeeee;
 }
 
 .button:hover {
+  background-color: #cccccc;
+
   cursor: pointer;
 }
 
