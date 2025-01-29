@@ -1,7 +1,14 @@
 import { createRoot } from "react-dom/client";
 import { App } from "./components/app/App";
+import { StrictMode } from "react";
+
+import "./styles/global.less";
 
 const rootElement = document.getElementById("root");
 const reactRoot = createRoot(rootElement);
 
-reactRoot.render(< App/>);
+reactRoot.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);

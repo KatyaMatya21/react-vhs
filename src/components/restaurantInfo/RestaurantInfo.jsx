@@ -1,6 +1,7 @@
 import { Menu } from "../menu/Menu.jsx";
 import { Reviews } from "../reviews/Reviews.jsx";
 import { ReviewForm } from "../reviewForm/ReviewForm.jsx";
+import styles from "./restaurantInfo.module.less";
 
 export const RestaurantInfo = ({ restaurant }) => {
   const { name, menu, reviews } = restaurant;
@@ -10,11 +11,11 @@ export const RestaurantInfo = ({ restaurant }) => {
   }
 
   return (
-    <div className='restaurant'>
-      <h2 className='main-title'>{name}</h2>
-      {Boolean(menu.length) && <Menu menu={menu} />}
-      {Boolean(reviews.length) && <Reviews reviews={reviews} />}
-      <ReviewForm />
-    </div>
+    <>
+      <h2 className={styles.title}>{name}</h2>
+        {Boolean(menu.length) && <Menu menu={menu} />}
+        {Boolean(reviews.length) && <Reviews reviews={reviews} />}
+        <ReviewForm />
+    </>
   );
 };

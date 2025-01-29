@@ -1,0 +1,30 @@
+@import "../../styles/variables.less";
+
+.nav {
+  display: flex;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.nav__item {
+  margin-right: 15px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  a {
+    display: block;
+
+    font-size: 18px;
+    color: @yellow-light;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      color: @yellow;
+    }
+  }
+}

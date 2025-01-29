@@ -1,16 +1,16 @@
 import { useFormReview } from "./useFormReview.js";
 import { Counter } from "../counter/Counter";
 import { FormGroup } from "../formGroup/FormGroup.jsx";
-import './ReviewForm.css';
+import styles from "./reviewForm.module.less";
 
 export const ReviewForm = () => {
   const { form, setName, setText, setRatingDecrement, setRatingIncrement, setClear } = useFormReview();
   const { name, text, rating } = form;
 
   return (
-    <form className='form'>
+    <form className={styles.form}>
 
-      <h3>Add review</h3>
+      <h3 className={styles.title}>Add review</h3>
 
       <FormGroup
         title="Name"
@@ -30,11 +30,11 @@ export const ReviewForm = () => {
         onIncrement={setRatingIncrement}
       />
 
-      <div className="button-group">
-        <button className='button' type="button">Send</button>
+      <div className={styles.buttonGroup}>
+        <button className={styles.button} type="button">Send</button>
         <button
           onClick={setClear}
-          className='button'
+          className={styles.button}
           type="button"
         >Clear form</button>
       </div>

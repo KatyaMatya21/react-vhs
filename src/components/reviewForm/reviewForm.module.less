@@ -1,0 +1,46 @@
+@import "../../styles/variables.less";
+
+.form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0 0 15px 0;
+
+  text-align: center;
+  font-weight: 500;
+}
+
+.buttonGroup {
+  display: flex;
+  margin-top: 20px;
+
+  .button {
+    display: block;
+    width: 100%;
+    padding: 20px 15px;
+    margin-right: 10px;
+
+    font-size: 20px;
+    font-weight: 300;
+    color: @violet;
+    text-transform: uppercase;
+
+    border: none;
+    border-radius: 5px;
+    background-color: @yellow-light;
+
+    &:hover {
+      color: @yellow-light;
+
+      background-color:@violet;
+
+      cursor: pointer;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
