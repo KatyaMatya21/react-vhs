@@ -1,6 +1,7 @@
 import { useFormReview } from "./useFormReview.js";
 import { Counter } from "../counter/Counter";
 import { FormGroup } from "../formGroup/FormGroup.jsx";
+import { Button } from "../button/Button.jsx";
 import styles from "./reviewForm.module.less";
 
 export const ReviewForm = () => {
@@ -31,12 +32,8 @@ export const ReviewForm = () => {
       />
 
       <div className={styles.buttonGroup}>
-        <button className={styles.button} type="button">Send</button>
-        <button
-          onClick={setClear}
-          className={styles.button}
-          type="button"
-        >Clear form</button>
+        <Button text={"Send"} type={"button"} />
+        <Button text={"Clear form"} type={"button"} onClick={setClear} />
       </div>
 
     </form>

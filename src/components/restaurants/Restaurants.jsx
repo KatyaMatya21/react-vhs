@@ -19,8 +19,6 @@ export const Restaurants = ({ restaurants }) => {
     <>
       <RestaurantTabs activeRestaurantId={restaurantActiveId} onRestaurantChange={onRestaurantChange} restaurants={restaurants} />
       {restaurantActiveId && foundRestaurant && <RestaurantInfo restaurant={foundRestaurant} />}
-      {restaurantActiveId && foundRestaurant && <RestaurantInfo restaurant={foundRestaurant} />}
-      {restaurantActiveId && foundRestaurant && <RestaurantInfo restaurant={foundRestaurant} />}
     </>
   );
 };
