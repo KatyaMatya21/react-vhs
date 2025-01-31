@@ -1,0 +1,17 @@
+@import "../../styles/variables.less";
+
+.tabs {
+  position: relative;
+  top: -40px;
+  left: -20px;
+
+  display: flex;
+  flex-direction: column;
+  width: calc(100% + 40px);
+
+  background-color: @yellow-light;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}

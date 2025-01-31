@@ -1,14 +1,15 @@
 import { Review } from "../review/Review.jsx";
+import styles from "./reviews.module.less";
 
 export const Reviews = ({ reviews }) => {
   return (
-    <>
-      <h3 className='title'>Reviews</h3>
-      <div className='list' style={{marginBottom:"20px"}}>
+    <div className={styles.reviews}>
+      <h3 className={styles.title}>Reviews</h3>
+      <div className={styles.list}>
         {reviews.map((review) => (
           <Review key={review.id} review={review} />
         ))}
       </div>
-    </>
+    </div>
   );
 };

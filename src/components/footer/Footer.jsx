@@ -1,5 +1,10 @@
+import { Logo } from "../logo/Logo.jsx";
+import styles from "./footer.module.less";
+
 export const Footer = () => {
   return (
-    <footer style={{ textAlign: "center", border: "2px solid green", padding: "20px" }}>FOOTER</footer>
+    <footer className={styles.footer}>
+      <Logo />
+    </footer>
   );
 };

@@ -1,4 +1,5 @@
-import './RestaurantTabsButton.css';
+import classNames from "classnames";
+import styles from "./restaurantTabsButton.module.less";
 
 export const RestaurantTabsButton = ({ active, onRestaurantChange, restaurant }) => {
   const { id, name } = restaurant;
@@ -8,6 +9,13 @@ export const RestaurantTabsButton = ({ active, onRestaurantChange, restaurant })
   }
 
   return (
-    <button className={active ? "button button--active" : "button"} type={"button"} onClick={() => onRestaurantChange(id)}>{name}</button>
+    <button
+      type={"button"}
+      onClick={() => onRestaurantChange(id)}
+
+      className={classNames(styles.button, active && styles.buttonActive)}
+    >
+      {name}
+    </button>
   );
 };

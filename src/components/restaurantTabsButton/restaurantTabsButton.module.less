@@ -1,0 +1,42 @@
+@import "../../styles/variables.less";
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 20px 10px;
+
+  font-size: 20px;
+  font-weight: 300;
+  color: @violet;
+  text-transform: uppercase;
+
+  background-color: @yellow-light;
+  border: none;
+
+  &:hover {
+    color: @yellow;
+
+    background-color: @violet;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    cursor: pointer;
+  }
+}
+
+.buttonActive {
+  color: @yellow-light;
+
+  background-color: @violet;
+  border-radius: 15px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+
+  &:hover {
+    color: @yellow;
+
+    background-color: @violet;
+  }
+}
