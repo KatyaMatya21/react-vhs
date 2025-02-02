@@ -1,8 +1,11 @@
+import { use } from "react";
+import { AuthContext } from "../authContext/AuthContext.js";
 import { DishCounter } from "../dishCounter/DishCounter";
 import styles from "./dish.module.less";
 
 export const Dish = ({ position }) => {
   const { name, price, ingredients } = position;
+  const { loggedIn } = use(AuthContext);
 
   return (
     <div className={styles.dish}>
@@ -14,7 +17,7 @@ export const Dish = ({ position }) => {
           </li>
         ))}
       </ul>
-      <DishCounter/>
+      {loggedIn && <DishCounter/>}
     </div>
   );
 };
