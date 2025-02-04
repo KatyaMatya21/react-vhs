@@ -17,7 +17,6 @@ export const usersSlice = createSlice({
   }
 });
 
-
 export const {
   selectUserById,
 } = usersSlice.selectors;
