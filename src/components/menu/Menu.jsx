@@ -1,13 +1,13 @@
-import { Dish } from "../dish/Dish.jsx";
 import styles from "./menu.module.less";
+import { DishContainer } from "../dish/DishContainer.jsx";
 
-export const Menu = ({ menu }) => {
+export const Menu = ({ menuIds }) => {
   return (
     <div className={styles.menu}>
       <h3 className={styles.title}>Menu</h3>
       <div className={styles.list}>
-        {menu.map((position) => (
-          <Dish key={position.id} position={position} />
+        {menuIds.map((id) => (
+          <DishContainer key={id} id={id} />
         ))}
       </div>
     </div>
