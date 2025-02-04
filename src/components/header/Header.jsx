@@ -1,13 +1,10 @@
-import { use } from "react";
 import { Logo } from "../logo/Logo.jsx";
 import { Nav } from "../nav/Nav.jsx";
 import { ToggleThemeButton } from "../toggleThemeButton/ToggleThemeButton.jsx";
-import { LoginButton } from "../loginButton/LoginButton.jsx";
-import { AuthContext } from "../authContext/AuthContext.js";
 import styles from "./header.module.less";
+import {UserNav} from "../userNav/UserNav.jsx";
 
 export const Header = () => {
-  const { loggedIn } = use(AuthContext);
 
   return (
     <header className={styles.header}>
@@ -17,10 +14,7 @@ export const Header = () => {
       <div className={styles.theme}>
         <ToggleThemeButton/>
       </div>
-      <div className={styles.user}>
-        {loggedIn && <span>Hi User!</span>}
-        <LoginButton/>
-      </div>
+      <UserNav/>
     </header>
 );
 };
