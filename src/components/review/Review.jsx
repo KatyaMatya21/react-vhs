@@ -1,13 +1,11 @@
 import { IconStar } from "../iconStar/IconStar.jsx";
 import styles from "./review.module.less";
 
-export const Review = ({ review }) => {
-  const { user, text, rating } = review;
-
+export const Review = ({ name, rating, text }) => {
   return (
     <div className={styles.review}>
       <div className={styles.user}>
-        {user}
+        {name}
         <span className={styles.rating}>
           {Array.from({ length: rating }, (_, i) => (
             <IconStar key={i} />

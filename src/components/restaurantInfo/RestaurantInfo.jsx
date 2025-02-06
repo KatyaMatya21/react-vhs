@@ -1,12 +1,19 @@
 import { Menu } from "../menu/Menu.jsx";
 import { Reviews } from "../reviews/Reviews.jsx";
 import { ReviewForm } from "../reviewForm/ReviewForm.jsx";
-import { use } from "react";
-import { AuthContext } from "../authContext/AuthContext.js";
+
 import styles from "./restaurantInfo.module.less";
 
-export const RestaurantInfo = ({ restaurant }) => {
-  const { name, menu, reviews } = restaurant;
+import { use } from "react";
+import { AuthContext } from "../authContext/AuthContext.js";
+import { useSelector } from "react-redux";
+import { selectRestaurantById } from "../redux/entities/restaurants/slice.js";
+
+export const RestaurantInfo = ({ restaurantId }) => {
+  const restaurant = useSelector((state) => selectRestaurantById(state, restaurantId));
+
+  const { name, menu, reviews } = restaurant || {};
+
   const { loggedIn } = use(AuthContext);
 
   if (!name) {
@@ -16,9 +23,9 @@ export const RestaurantInfo = ({ restaurant }) => {
   return (
     <>
       <h2 className={styles.title}>{name}</h2>
-        {Boolean(menu.length) && <Menu menu={menu} />}
-        {Boolean(reviews.length) && <Reviews reviews={reviews} />}
-        {loggedIn && <ReviewForm />}
+      {Boolean(menu.length) && <Menu menuIds={menu} />}
+      {Boolean(reviews.length) && <Reviews reviewsIds={reviews} />}
+      {loggedIn && <ReviewForm />}
     </>
   );
 };

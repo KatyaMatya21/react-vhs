@@ -1,12 +1,7 @@
-import { use } from "react";
-import { AuthContext } from "../authContext/AuthContext.js";
 import { DishCounter } from "../dishCounter/DishCounter";
 import styles from "./dish.module.less";
 
-export const Dish = ({ position }) => {
-  const { name, price, ingredients } = position;
-  const { loggedIn } = use(AuthContext);
-
+export const Dish = ({ name, price, ingredients, showCounter }) => {
   return (
     <div className={styles.dish}>
       <h4 className={styles.title}>{name} <span className={styles.price}>{price} €</span></h4>
@@ -17,7 +12,7 @@ export const Dish = ({ position }) => {
           </li>
         ))}
       </ul>
-      {loggedIn && <DishCounter/>}
+      {showCounter && <DishCounter/>}
     </div>
   );
 };

@@ -1,17 +1,20 @@
-import { restaurants } from "../../mock.js";
-import { Layout } from "../layout/Layout.jsx";
-import { Restaurants } from "../restaurants/Restaurants.jsx";
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
 import { ThemeContextProvider } from "../themeContext/ThemeContextProvider.jsx";
 import { AuthContextProvider } from "../authContext/AuthContextProvider.jsx";
+import { Layout } from "../layout/Layout.jsx";
+import { Restaurants } from "../restaurants/Restaurants.jsx";
 
 export const App = () => {
   return (
-    <ThemeContextProvider>
-      <AuthContextProvider>
-        <Layout>
-          {restaurants.length ? <Restaurants restaurants={restaurants}/> : <p>No restaurants found.</p>}
-        </Layout>
-      </AuthContextProvider>
-    </ThemeContextProvider>
+    <Provider store={store}>
+      <ThemeContextProvider>
+        <AuthContextProvider>
+          <Layout>
+            <Restaurants />
+          </Layout>
+        </AuthContextProvider>
+      </ThemeContextProvider>
+    </Provider>
   );
 };

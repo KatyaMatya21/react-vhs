@@ -1,11 +1,16 @@
-import { RestaurantTabsButton } from "../restaurantTabsButton/RestaurantTabsButton.jsx";
 import styles from "./restaurantTabs.module.less";
+import { RestaurantTabsButtonContainer } from "../restaurantTabsButton/RestaurantTabsButtonContainer.jsx";
 
-export const RestaurantTabs = ({ activeRestaurantId, onRestaurantChange, restaurants }) => {
+export const RestaurantTabs = ({ activeRestaurantId, onRestaurantChange, restaurantIds }) => {
   return (
     <div className={styles.tabs}>
-      {restaurants.map((restaurant) => (
-        <RestaurantTabsButton key={restaurant.id} active={activeRestaurantId===restaurant.id} onRestaurantChange={onRestaurantChange} restaurant={restaurant} />
+      {restaurantIds.map((id) => (
+        <RestaurantTabsButtonContainer
+          key={id}
+          active={activeRestaurantId===id}
+          onRestaurantChange={onRestaurantChange}
+          id={id}
+        />
       ))}
     </div>
   );
