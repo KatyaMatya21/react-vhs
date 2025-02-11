@@ -1,5 +1,5 @@
-import { CartItemContainer } from "../cartItem/cartItemContainer.jsx";
-import styles from "./cart.module.less";
+import { CartItemContainer } from "../cartItem/CartItemContainer.jsx";
+import styles from "./Cart.module.less";
 
 export const Cart = ({ itemsIds }) => {
   return (

@@ -1,4 +1,4 @@
-import { Cart } from "./cart.jsx";
+import { Cart } from "./Cart.jsx";
 import { useSelector } from "react-redux";
 import { selectCartItemsIds } from "../../redux/entities/cart/slice";
 

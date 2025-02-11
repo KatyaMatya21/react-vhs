@@ -1,4 +1,4 @@
-import styles from "./formGroup.module.less";
+import styles from "./FormGroup.module.less";
 
 export const FormGroup = ({ title, value, onChange, type }) => {
   return (

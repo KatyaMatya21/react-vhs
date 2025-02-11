@@ -2,7 +2,7 @@ import { useFormReview } from "./useFormReview.js";
 import { Counter } from "../counter/Counter";
 import { FormGroup } from "../formGroup/FormGroup.jsx";
 import { Button } from "../button/Button.jsx";
-import styles from "./reviewForm.module.less";
+import styles from "./ReviewForm.module.less";
 
 export const ReviewForm = () => {
   const { form, setName, setText, setRatingDecrement, setRatingIncrement, setClear } = useFormReview();

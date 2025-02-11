@@ -1,20 +1,13 @@
-import { Menu } from "../menu/Menu.jsx";
-import { Reviews } from "../reviews/Reviews.jsx";
-import { ReviewForm } from "../reviewForm/ReviewForm.jsx";
-
-import styles from "./restaurantInfo.module.less";
-
-import { use } from "react";
-import { AuthContext } from "../authContext/AuthContext.js";
+import styles from "./RestaurantInfo.module.less";
 import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/entities/restaurants/slice.js";
+import { Outlet } from "react-router";
+import { RestaurantNav } from "../restaurantNav/RestaurantNav.jsx";
 
 export const RestaurantInfo = ({ restaurantId }) => {
   const restaurant = useSelector((state) => selectRestaurantById(state, restaurantId));
 
-  const { name, menu, reviews } = restaurant || {};
-
-  const { loggedIn } = use(AuthContext);
+  const { name } = restaurant || {};
 
   if (!name) {
     return null;
@@ -23,9 +16,8 @@ export const RestaurantInfo = ({ restaurantId }) => {
   return (
     <>
       <h2 className={styles.title}>{name}</h2>
-      {Boolean(menu.length) && <Menu menuIds={menu} />}
-      {Boolean(reviews.length) && <Reviews reviewsIds={reviews} />}
-      {loggedIn && <ReviewForm />}
+      <RestaurantNav restaurantId={restaurantId} />
+      <Outlet />
     </>
   );
 };

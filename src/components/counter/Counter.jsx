@@ -1,6 +1,6 @@
 import { IconPlus } from "../iconPlus/IconPlus.jsx";
 import { IconMinus } from "../iconMinus/IconMinus.jsx";
-import styles from "./counter.module.less";
+import styles from "./Counter.module.less";
 
 export const Counter = ({ count, onDecrement, onIncrement }) => {
   return (

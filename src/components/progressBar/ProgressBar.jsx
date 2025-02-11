@@ -1,5 +1,5 @@
 import { useProgressBar } from "./useProgressBar.js";
-import styles from "./progressBar.module.less";
+import styles from "./ProgressBar.module.less";
 
 export const ProgressBar = () => {
   const value = useProgressBar();

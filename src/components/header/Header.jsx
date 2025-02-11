@@ -1,7 +1,7 @@
 import { Logo } from "../logo/Logo.jsx";
 import { Nav } from "../nav/Nav.jsx";
 import { ToggleThemeButton } from "../toggleThemeButton/ToggleThemeButton.jsx";
-import styles from "./header.module.less";
+import styles from "./Header.module.less";
 import {UserNav} from "../userNav/UserNav.jsx";
 
 export const Header = () => {

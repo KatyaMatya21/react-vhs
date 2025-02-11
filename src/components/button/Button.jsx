@@ -1,7 +1,7 @@
 import { use } from "react";
 import classNames from "classnames";
 import { ThemeContext } from "../themeContext/ThemeContext.js";
-import styles from "./button.module.less";
+import styles from "./Button.module.less";
 
 export const Button = ({ text, type, onClick }) => {
   const { theme } = use(ThemeContext);

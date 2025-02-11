@@ -1,4 +1,4 @@
-import styles from "./reviews.module.less";
+import styles from "./Reviews.module.less";
 import { ReviewContainer } from "../review/ReviewContainer.jsx";
 
 export const Reviews = ({ reviewsIds }) => {

@@ -1,10 +1,15 @@
-import styles from "./nav.module.less";
+import styles from "./Nav.module.less";
+import { Link } from "react-router";
 
 export const Nav = () => {
   return (
     <ul className={styles.nav}>
-        <li className={styles.nav__item}><a href="#">About</a></li>
-        <li className={styles.nav__item}><a href="#">Contact</a></li>
+        <li className={styles.nav__item}>
+          <Link to="/about" title="About">About</Link>
+        </li>
+        <li className={styles.nav__item}>
+          <Link to="/contacts" title="Contacts">Contacts</Link>
+        </li>
     </ul>
   );
 };
