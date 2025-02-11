@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../redux/entities/restaurants/slice.js";
+import { selectRestaurantById } from "../../redux/entities/restaurants/slice.js";
 import { RestaurantTabsButton } from "./RestaurantTabsButton.jsx";
 
 export const RestaurantTabsButtonContainer = ({ active, onRestaurantChange, id }) => {

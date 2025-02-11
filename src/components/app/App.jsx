@@ -1,5 +1,5 @@
 import { Provider } from "react-redux";
-import { store } from "../redux/store";
+import { store } from "../../redux/store";
 import { ThemeContextProvider } from "../themeContext/ThemeContextProvider.jsx";
 import { AuthContextProvider } from "../authContext/AuthContextProvider.jsx";
 import { Layout } from "../layout/Layout.jsx";

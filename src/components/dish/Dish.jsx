@@ -1,7 +1,7 @@
 import { DishCounter } from "../dishCounter/DishCounter";
 import styles from "./dish.module.less";
 
-export const Dish = ({ name, price, ingredients, showCounter }) => {
+export const Dish = ({ id, name, price, ingredients, showCounter }) => {
   return (
     <div className={styles.dish}>
       <h4 className={styles.title}>{name} <span className={styles.price}>{price} €</span></h4>
@@ -12,7 +12,7 @@ export const Dish = ({ name, price, ingredients, showCounter }) => {
           </li>
         ))}
       </ul>
-      {showCounter && <DishCounter/>}
+      {showCounter && <DishCounter dishId={id} />}
     </div>
   );
 };

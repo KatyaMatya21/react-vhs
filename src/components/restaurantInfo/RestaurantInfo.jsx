@@ -7,7 +7,7 @@ import styles from "./restaurantInfo.module.less";
 import { use } from "react";
 import { AuthContext } from "../authContext/AuthContext.js";
 import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../redux/entities/restaurants/slice.js";
+import { selectRestaurantById } from "../../redux/entities/restaurants/slice.js";
 
 export const RestaurantInfo = ({ restaurantId }) => {
   const restaurant = useSelector((state) => selectRestaurantById(state, restaurantId));

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { selectReviewById } from "../redux/entities/reviews/slice.js";
-import { selectUserById } from "../redux/entities/users/slice.js";
+import { selectReviewById } from "../../redux/entities/reviews/slice.js";
+import { selectUserById } from "../../redux/entities/users/slice.js";
 import { Review } from "./Review.jsx";
 
 export const ReviewContainer = ({ id }) => {

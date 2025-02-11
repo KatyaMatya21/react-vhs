@@ -1,0 +1,35 @@
+@import "../../styles/variables.less";
+
+.cart {
+  margin-bottom: 40px;
+}
+
+.title {
+  margin: 0 0 15px 0;
+
+  text-align: center;
+  font-weight: 500;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px 0;
+
+  border-bottom: 2px solid @yellow-light;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

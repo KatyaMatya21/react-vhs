@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { normalizedUsers } from "../../../../constants/normalized-mock";
+import { normalizedUsers } from "../../../constants/normalized-mock";
 
 const initialState = {
   ids: normalizedUsers.map(({ id }) => id),
