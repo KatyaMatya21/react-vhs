@@ -1,0 +1,87 @@
+@import "../../styles/variables.less";
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 20px 15px;
+  margin-right: 10px;
+
+  font-size: 20px;
+  font-weight: 300;
+  color: @violet;
+  text-transform: uppercase;
+
+  border: none;
+  border-radius: 5px;
+  background-color: @yellow-light;
+
+  &:hover {
+    color: @yellow-light;
+
+    background-color: @orange;
+
+    cursor: pointer;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.button.dark {
+  background-color: @orange;
+  color: @yellow-light;
+
+  &:hover {
+    background-color: @yellow-light;
+    color: @orange;
+  }
+}
+
+.button.square {
+  width: auto;
+  padding: 10px;
+  margin-right: 0;
+
+  background-color: @orange;
+  border-radius: 5px;
+  border: 2px solid @orange;
+
+  svg {
+    display: block;
+
+    path {
+      fill: @yellow-light;
+    }
+  }
+
+  &:hover {
+    background-color: transparent;
+
+    cursor: pointer;
+
+    svg {
+      path {
+        fill: @orange;
+      }
+    }
+  }
+}
+
+.button.square.dark {
+  background-color: @violet;
+  border: 2px solid @violet;
+
+  svg path {
+    fill: @yellow-light;
+  }
+
+  &:hover {
+    background-color: transparent;
+    border-color: @violet;
+
+    svg path {
+      fill: @violet;
+    }
+  }
+}

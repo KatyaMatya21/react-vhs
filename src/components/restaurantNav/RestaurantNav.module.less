@@ -1,0 +1,38 @@
+@import "../../styles/variables.less";
+
+.nav {
+  position: relative;
+  left: -20px;
+  display: flex;
+  justify-content: center;
+  width: calc(100% + 40px);
+  margin-bottom: 40px;
+
+  a {
+    display: block;
+    width: 100%;
+    padding: 14px 16px;
+
+    text-align: center;
+    text-transform: uppercase;
+    color: @violet;
+    text-decoration: none;
+
+    background-color: @yellow-light;
+
+    &:hover {
+      color: @yellow-light;
+      background-color: @orange;
+    }
+
+    &.active {
+      color: @yellow-light;
+      background-color: @orange;
+
+      &:hover {
+        color: @yellow-light;
+        background-color: @violet;
+      }
+    }
+  }
+}

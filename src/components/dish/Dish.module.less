@@ -1,0 +1,64 @@
+@import "../../styles/variables.less";
+
+.dish {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin-right: 15px;
+
+  background-color: @yellow-light;
+  border-radius: 15px;
+}
+
+.title {
+  display: flex;
+  margin: 0 0 15px 0;
+
+  color: @violet;
+  text-transform: uppercase;
+
+   a  {
+     color: @violet;
+     text-decoration: none;
+
+     &:hover {
+       color: @orange;
+     }
+   }
+}
+
+.price {
+  display: block;
+  margin-left: auto;
+
+  color: @orange;
+}
+
+.ingredients {
+  margin: 0 0 20px 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.ingredient {
+  position: relative;
+
+  padding-left: 15px;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    display: block;
+    width: 7px;
+    height: 7px;
+
+    background-color: @violet;
+    border-radius: 50%;
+  }
+}

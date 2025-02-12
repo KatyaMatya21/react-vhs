@@ -1,5 +1,5 @@
 import { Logo } from "../logo/Logo.jsx";
-import styles from "./footer.module.less";
+import styles from "./Footer.module.less";
 
 export const Footer = () => {
   return (

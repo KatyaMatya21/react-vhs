@@ -7,9 +7,10 @@ export const LoginButton = () => {
 
   return (
     <Button
-      text={loggedIn ? "Logout" : "Login"}
       onClick={toggleLoggedIn}
       type={"button"}
-    />
+    >
+      {loggedIn ? "Logout" : "Login"}
+    </Button>
   );
 };

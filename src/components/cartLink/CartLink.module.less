@@ -1,0 +1,28 @@
+@import "../../styles/variables.less";
+
+.cartLink {
+  display: block;
+  margin: 0 10px;
+  padding: 5px;
+
+  @media (min-width: 768px) {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  svg {
+    display: block;
+    width: 40px;
+    height: 40px;
+
+    path {
+      fill: @yellow-light;
+    }
+  }
+
+  &:hover {
+    svg path {
+      fill: @yellow;
+    }
+  }
+}

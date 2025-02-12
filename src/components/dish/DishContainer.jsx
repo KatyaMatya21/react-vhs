@@ -1,15 +1,15 @@
 import { useSelector } from "react-redux";
-import { selectDishById } from "../redux/entities/dishes/slice.js";
+import { selectDishById } from "../../redux/entities/dishes/slice.js";
 import { Dish } from "./Dish.jsx";
 import { use } from "react";
 import { AuthContext } from "../authContext/AuthContext.js";
 
-export const DishContainer = ({ id }) => {
-  const dish = useSelector((state) => selectDishById(state, id));
+export const DishContainer = ({ dishId }) => {
+  const dish = useSelector((state) => selectDishById(state, dishId));
   const { name, price, ingredients } = dish || {};
   const { loggedIn } = use(AuthContext);
 
   return (
-    <Dish name={name} price={price} ingredients={ingredients} showCounter={loggedIn} />
+    <Dish dishId={dishId} name={name} price={price} ingredients={ingredients} showCounter={loggedIn} />
   );
 };
