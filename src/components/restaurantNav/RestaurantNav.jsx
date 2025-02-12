@@ -1,25 +1,19 @@
 import styles from "./RestaurantNav.module.less";
-import { NavLink, useLocation } from "react-router";
+import { NavLink } from "react-router";
+import classNames from "classnames";
 
 export const RestaurantNav = ({ restaurantId }) => {
-  const location = useLocation();
-  const { pathname } = location;
-
   return (
     <div className={styles.nav}>
       <NavLink
-        className={({isActive}) =>
-          (isActive || pathname.indexOf('reviews') === -1) ? styles.active : ""
-        }
         to={`/restaurants/${restaurantId}/menu`}
+        className={({ isActive }) => (classNames({[styles.active]: isActive}))}
       >
         Menu
       </NavLink>
       <NavLink
         to={`/restaurants/${restaurantId}/reviews`}
-        className={({isActive}) =>
-          isActive ? styles.active : ""
-        }
+        className={({ isActive}) => (classNames({[styles.active]: isActive}))}
       >
         Reviews
       </NavLink>

@@ -4,13 +4,14 @@ import { ThemeContextProvider } from "../themeContext/ThemeContextProvider.jsx";
 import { AuthContextProvider } from "../authContext/AuthContextProvider.jsx";
 import { Layout } from "../layout/Layout.jsx";
 import { Restaurants } from "../restaurants/Restaurants.jsx";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { HomePage } from "../../pages/HomePage.jsx";
 import { RestaurantPage } from "../../pages/RestaurantPage.jsx";
 import { MenuPage } from "../../pages/MenuPage.jsx";
 import { ReviewsPage } from "../../pages/ReviewsPage.jsx";
 import { DishPage } from "../../pages/DishPage.jsx";
 import { ErrorPage } from "../../pages/ErrorPage.jsx";
+import { CartPage } from "../../pages/CartPage.jsx";
 
 export const App = () => {
   return (
@@ -27,7 +28,7 @@ export const App = () => {
                 <Route path='/restaurants' element={<Restaurants />}>
                   <Route index element={<div>Choose restaurant</div>} />
                   <Route path=':restaurantId' element={<RestaurantPage />} >
-                    <Route index element={<MenuPage isIndex={true} />} />
+                    <Route index element={<Navigate to='menu' />} />
                     <Route path="menu" element={<MenuPage />} />
                     <Route path="reviews" element={<ReviewsPage />} />
                   </Route>
@@ -37,6 +38,7 @@ export const App = () => {
                   <Route path=':dishId' element={<DishPage />} />
                 </Route>
 
+                <Route path='/cart' element={<CartPage />}/>
                 <Route path='/about' element={<div>About</div>}/>
                 <Route path='/contacts' element={<div>Contacts</div>}/>
                 <Route path='/*' element={<ErrorPage />} />

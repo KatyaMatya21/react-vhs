@@ -1,0 +1,22 @@
+@import "../../styles/variables.less";
+
+.cartLink {
+  display: block;
+  margin-left: auto;
+
+  svg {
+    display: block;
+    width: 40px;
+    height: 40px;
+
+    path {
+      fill: @yellow-light;
+    }
+  }
+
+  &:hover {
+    svg path {
+      fill: @yellow;
+    }
+  }
+}
