@@ -37,3 +37,51 @@
     color: @orange;
   }
 }
+
+.button.square {
+  width: auto;
+  padding: 10px;
+  margin-right: 0;
+
+  background-color: @orange;
+  border-radius: 5px;
+  border: 2px solid @orange;
+
+  svg {
+    display: block;
+
+    path {
+      fill: @yellow-light;
+    }
+  }
+
+  &:hover {
+    background-color: transparent;
+
+    cursor: pointer;
+
+    svg {
+      path {
+        fill: @orange;
+      }
+    }
+  }
+}
+
+.button.square.dark {
+  background-color: @violet;
+  border: 2px solid @violet;
+
+  svg path {
+    fill: @yellow-light;
+  }
+
+  &:hover {
+    background-color: transparent;
+    border-color: @violet;
+
+    svg path {
+      fill: @violet;
+    }
+  }
+}
