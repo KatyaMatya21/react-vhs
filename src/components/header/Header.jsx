@@ -13,9 +13,7 @@ export const Header = () => {
       <Logo/>
       <Nav/>
       <CartLink />
-      <div className={styles.theme}>
-        <ToggleThemeButton/>
-      </div>
+      <ToggleThemeButton/>
       <UserNav/>
     </header>
 );

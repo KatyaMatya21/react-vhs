@@ -1,5 +1,5 @@
-import { IconPlus } from "../iconPlus/IconPlus.jsx";
-import { IconMinus } from "../iconMinus/IconMinus.jsx";
+import { IconPlus } from "../icons/IconPlus.jsx";
+import { IconMinus } from "../icons/IconMinus.jsx";
 import styles from "./Counter.module.less";
 
 export const Counter = ({ count, onDecrement, onIncrement }) => {

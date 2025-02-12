@@ -2,7 +2,13 @@
 
 .cartLink {
   display: block;
-  margin-left: auto;
+  margin: 0 10px;
+  padding: 5px;
+
+  @media (min-width: 768px) {
+    margin-right: 0;
+    margin-left: auto;
+  }
 
   svg {
     display: block;

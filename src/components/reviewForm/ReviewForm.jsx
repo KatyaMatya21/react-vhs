@@ -32,8 +32,8 @@ export const ReviewForm = () => {
       />
 
       <div className={styles.buttonGroup}>
-        <Button text={"Send"} type={"button"} />
-        <Button text={"Clear form"} type={"button"} onClick={setClear} />
+        <Button type={"button"}>Send</Button>
+        <Button type={"button"} onClick={setClear}>Clear form</Button>
       </div>
 
     </form>

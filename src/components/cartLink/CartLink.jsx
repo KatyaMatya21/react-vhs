@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { IconCart } from "../iconCart/IconCart.jsx";
+import { IconCart } from "../icons/IconCart.jsx";
 import styles from "./CartLink.module.less";
 
 export const CartLink = () => {

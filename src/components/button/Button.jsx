@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { ThemeContext } from "../themeContext/ThemeContext.js";
 import styles from "./Button.module.less";
 
-export const Button = ({ text, type, onClick }) => {
+export const Button = ({ children, type, onClick }) => {
   const { theme } = use(ThemeContext);
 
   return (
@@ -14,7 +14,7 @@ export const Button = ({ text, type, onClick }) => {
       onClick={onClick}
       type={type}
     >
-      {text}
+      {children}
     </button>
 )
   ;

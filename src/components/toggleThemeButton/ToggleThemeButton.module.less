@@ -1,0 +1,44 @@
+@import "../../styles/variables.less";
+
+.toggleThemeButton {
+  display: block;
+  margin: 0 10px;
+  padding: 5px;
+  border: none;
+
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  svg {
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+
+  &.light {
+    svg path {
+      fill: @yellow-light;
+    }
+
+    &:hover {
+      svg path {
+        fill: @yellow;
+      }
+    }
+  }
+
+  &.dark {
+    svg path {
+      fill: @orange;
+    }
+
+    &:hover {
+      svg path {
+        fill: @yellow;
+      }
+    }
+  }
+}
