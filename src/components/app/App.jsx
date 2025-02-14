@@ -28,7 +28,7 @@ export const App = () => {
                 <Route path='/restaurants' element={<Restaurants />}>
                   <Route index element={<div>Choose restaurant</div>} />
                   <Route path=':restaurantId' element={<RestaurantPage />} >
-                    <Route index element={<Navigate to='menu' />} />
+                    <Route index element={<Navigate to='menu' replace />} />
                     <Route path="menu" element={<MenuPage />} />
                     <Route path="reviews" element={<ReviewsPage />} />
                   </Route>
