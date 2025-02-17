@@ -26,17 +26,15 @@ export const reviewsSlice = createSlice({
         state.getReviewsRequestStatus = REQUEST_STATUS_REJECTED;
       })
       .addCase(getReviews.fulfilled, (state, { payload }) => {
-        entityAdapter.setAll(state, payload);
+        entityAdapter.addMany(state, payload);
         state.getReviewsRequestStatus = REQUEST_STATUS_FULFILLED;
       }),
 });
-
 
 const selectReviewsSlice = (state) => state.reviews;
 
 export const {
   selectById: selectReviewById,
-  selectIds: selectReviewsIds,
 } = entityAdapter.getSelectors(selectReviewsSlice);
 
 export const { selectGetReviewsRequestStatus } = reviewsSlice.selectors;

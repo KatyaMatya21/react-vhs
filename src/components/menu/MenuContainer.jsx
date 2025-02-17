@@ -1,16 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Menu } from "./Menu.jsx";
-import { selectDishesIds, selectGetDishesRequestStatus } from "../../redux/entities/dishes/slice.js";
+import { selectGetDishesRequestStatus } from "../../redux/entities/dishes/slice.js";
 import { useEffect } from "react";
 import { getDishes } from "../../redux/entities/dishes/getDishes.js";
 import { REQUEST_STATUS_IDLE, REQUEST_STATUS_PENDING, REQUEST_STATUS_REJECTED } from "../../redux/constants.js";
 import { Loader } from "../loader/Loader.jsx";
 import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";
+import { selectRestaurantById } from "../../redux/entities/restaurants/slice.js";
 
 export const MenuContainer = ({ restaurantId }) => {
   const dispatch = useDispatch();
   const requestStatus = useSelector(selectGetDishesRequestStatus);
-  const dishesIds = useSelector(selectDishesIds);
+  const menuIds = useSelector((state) => selectRestaurantById(state, restaurantId)).menu;
 
   useEffect(() => {
     dispatch(getDishes(restaurantId));
@@ -25,6 +26,6 @@ export const MenuContainer = ({ restaurantId }) => {
   }
 
   return (
-    <Menu menuIds={dishesIds} />
+    <Menu menuIds={menuIds} />
   );
 };

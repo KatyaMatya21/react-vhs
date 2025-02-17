@@ -3,19 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router";
 import { RestaurantNav } from "../restaurantNav/RestaurantNav.jsx";
 import { useEffect } from "react";
-import { getCurrentRestaurant } from "../../redux/entities/currentRestaurant/getCurrentRestaurant.js";
 import { REQUEST_STATUS_IDLE, REQUEST_STATUS_PENDING, REQUEST_STATUS_REJECTED } from "../../redux/constants.js";
-import { selectCurrentRestaurant, selectGetCurrentRestaurantsRequestStatus } from "../../redux/entities/currentRestaurant/slice.js";
 import { Loader } from "../loader/Loader.jsx";
 import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";
+import { getRestaurantById } from "../../redux/entities/restaurants/getRestaurantById.js";
+import { selectGetRestaurantByIdRequestStatus, selectRestaurantById } from "../../redux/entities/restaurants/slice.js";
 
 export const RestaurantInfo = ({ restaurantId }) => {
   const dispatch = useDispatch();
-  const requestStatus = useSelector(selectGetCurrentRestaurantsRequestStatus);
-  const restaurant = useSelector(selectCurrentRestaurant);
+  const requestStatus = useSelector(selectGetRestaurantByIdRequestStatus);
+  const restaurant = useSelector( (state) => selectRestaurantById(state, restaurantId));
 
   useEffect(() => {
-    dispatch(getCurrentRestaurant(restaurantId));
+    dispatch(getRestaurantById(restaurantId));
   }, [restaurantId, dispatch]);
 
   if (requestStatus === REQUEST_STATUS_PENDING || requestStatus === REQUEST_STATUS_IDLE) {

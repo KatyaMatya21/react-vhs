@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { selectDishById } from "./slice.js";
 
-export const getCurrentDish = createAsyncThunk(
-  "dish/getCurrentDish",
+export const getDishById = createAsyncThunk(
+  "restaurant/getDishById",
   async (id, { rejectWithValue }) => {
     const response = await fetch("http://localhost:3001/api/dish/" + id, {});
     const result = await response.json();
@@ -11,5 +12,10 @@ export const getCurrentDish = createAsyncThunk(
     }
 
     return result;
+  },
+  {
+    condition: (id, { getState }) => {
+      return !selectDishById(getState(), id);
+    },
   }
 );

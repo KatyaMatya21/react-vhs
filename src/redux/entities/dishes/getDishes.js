@@ -1,4 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { selectRestaurantById } from "../restaurants/slice.js";
+import { selectDishById } from "./slice.js";
 
 export const getDishes = createAsyncThunk(
   "dishes/getDishes",
@@ -11,5 +13,20 @@ export const getDishes = createAsyncThunk(
     }
 
     return result;
+  },
+  {
+    condition: (id, { getState }) => {
+      const restaurantMenu = selectRestaurantById(getState(), id).menu;
+      let isDishMissing = false;
+
+      restaurantMenu.map((dishId) => {
+        const dish = selectDishById(getState(), dishId);
+        if (!dish) {
+          isDishMissing = true;
+        }
+      });
+
+      return isDishMissing;
+    },
   }
 );

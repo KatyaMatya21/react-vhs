@@ -2,19 +2,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { Dish } from "./Dish.jsx";
 import { use, useEffect } from "react";
 import { AuthContext } from "../authContext/AuthContext.js";
-import { selectCurrentDish, selectGetCurrentDishRequestStatus } from "../../redux/entities/currentDish/slice.js";
 import { REQUEST_STATUS_IDLE, REQUEST_STATUS_PENDING, REQUEST_STATUS_REJECTED } from "../../redux/constants.js";
-import { getCurrentDish } from "../../redux/entities/currentDish/getCurrentDish.js";
 import { Loader } from "../loader/Loader.jsx";
 import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";
+import { selectDishById, selectGetDishByIdRequestStatus } from "../../redux/entities/dishes/slice.js";
+import { getDishById } from "../../redux/entities/dishes/getDishById.js";
 
 export const DishPageContainer = ({ dishId }) => {
   const dispatch = useDispatch();
-  const requestStatus = useSelector(selectGetCurrentDishRequestStatus);
-  const currentDish = useSelector(selectCurrentDish);
+  const requestStatus = useSelector(selectGetDishByIdRequestStatus);
+  const dish = useSelector((state) => selectDishById(state, dishId));
 
   useEffect(() => {
-    dispatch(getCurrentDish(dishId));
+    dispatch(getDishById(dishId));
   }, [dishId, dispatch]);
 
   if (requestStatus === REQUEST_STATUS_PENDING || requestStatus === REQUEST_STATUS_IDLE) {
@@ -25,8 +25,12 @@ export const DishPageContainer = ({ dishId }) => {
     return <ErrorBlock text="Error with data"/>;
   }
 
-  const { name, price, ingredients } = currentDish || {};
+  const { name, price, ingredients } = dish || {};
   const { loggedIn } = use(AuthContext);
+
+  if (!dish) {
+    return null;
+  }
 
   return (
     <Dish dishId={dishId} name={name} price={price} ingredients={ingredients} showCounter={loggedIn} />

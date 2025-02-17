@@ -6,6 +6,7 @@ import {
   REQUEST_STATUS_REJECTED
 } from "../../constants.js";
 import { getDishes } from "./getDishes.js";
+import { getDishById } from "./getDishById.js";
 
 const entityAdapter = createEntityAdapter();
 
@@ -16,6 +17,7 @@ export const dishesSlice = createSlice({
   }),
   selectors: {
     selectGetDishesRequestStatus: (state) => state.getDishesRequestStatus,
+    selectGetDishByIdRequestStatus: (state) => state.getDishByIdRequestStatus,
   },
   extraReducers: (builder) =>
     builder
@@ -26,8 +28,18 @@ export const dishesSlice = createSlice({
         state.getDishesRequestStatus = REQUEST_STATUS_REJECTED;
       })
       .addCase(getDishes.fulfilled, (state, { payload }) => {
-        entityAdapter.setAll(state, payload);
+        entityAdapter.addMany(state, payload);
         state.getDishesRequestStatus = REQUEST_STATUS_FULFILLED;
+      })
+      .addCase(getDishById.pending, (state) => {
+        state.getDishByIdRequestStatus = REQUEST_STATUS_PENDING;
+      })
+      .addCase(getDishById.rejected, (state) => {
+        state.getDishByIdRequestStatus = REQUEST_STATUS_REJECTED;
+      })
+      .addCase(getDishById.fulfilled, (state, { payload }) => {
+        entityAdapter.addOne(state, payload);
+        state.getDishByIdRequestStatus = REQUEST_STATUS_FULFILLED;
       }),
 });
 
@@ -35,8 +47,7 @@ const selectDishesSlice = (state) => state.dishes;
 
 export const {
   selectById: selectDishById,
-  selectIds: selectDishesIds,
 } = entityAdapter.getSelectors(selectDishesSlice);
 
-export const { selectGetDishesRequestStatus } = dishesSlice.selectors;
+export const { selectGetDishesRequestStatus, selectGetDishByIdRequestStatus } = dishesSlice.selectors;
 

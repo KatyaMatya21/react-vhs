@@ -6,6 +6,7 @@ import {
   REQUEST_STATUS_PENDING,
   REQUEST_STATUS_REJECTED
 } from "../../constants.js";
+import { getRestaurantById } from "./getRestaurantById.js";
 
 const entityAdapter = createEntityAdapter();
 
@@ -16,6 +17,7 @@ export const restaurantsSlice = createSlice({
   }),
   selectors: {
     selectGetRestaurantsRequestStatus: (state) => state.getRestaurantsRequestStatus,
+    selectGetRestaurantByIdRequestStatus: (state) => state.getRestaurantByIdRequestStatus,
   },
   extraReducers: (builder) =>
     builder
@@ -28,6 +30,16 @@ export const restaurantsSlice = createSlice({
       .addCase(getRestaurants.fulfilled, (state, { payload }) => {
         entityAdapter.setAll(state, payload);
         state.getRestaurantsRequestStatus = REQUEST_STATUS_FULFILLED;
+      })
+      .addCase(getRestaurantById.pending, (state) => {
+        state.getRestaurantByIdRequestStatus = REQUEST_STATUS_PENDING;
+      })
+      .addCase(getRestaurantById.rejected, (state) => {
+        state.getRestaurantByIdRequestStatus = REQUEST_STATUS_REJECTED;
+      })
+      .addCase(getRestaurantById.fulfilled, (state, { payload }) => {
+        entityAdapter.addOne(state, payload);
+        state.getRestaurantByIdRequestStatus = REQUEST_STATUS_FULFILLED;
       }),
 });
 
@@ -39,4 +51,4 @@ export const {
   selectTotal: selectTotalRestaurants
 } = entityAdapter.getSelectors(selectRestaurantsSlice);
 
-export const { selectGetRestaurantsRequestStatus } = restaurantsSlice.selectors;
+export const { selectGetRestaurantsRequestStatus, selectGetRestaurantByIdRequestStatus } = restaurantsSlice.selectors;
