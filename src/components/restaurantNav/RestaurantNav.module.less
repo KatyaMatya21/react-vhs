@@ -1,12 +1,12 @@
 @import "../../styles/variables.less";
 
 .nav {
-  position: relative;
-  left: -20px;
   display: flex;
   justify-content: center;
-  width: calc(100% + 40px);
   margin-bottom: 40px;
+
+  border-radius: 15px;
+  background-color: @yellow-light;
 
   a {
     display: block;
@@ -18,6 +18,7 @@
     color: @violet;
     text-decoration: none;
 
+    border-radius: 15px;
     background-color: @yellow-light;
 
     &:hover {

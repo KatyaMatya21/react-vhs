@@ -9,6 +9,10 @@ export const DishContainer = ({ dishId }) => {
   const { name, price, ingredients } = dish || {};
   const { loggedIn } = use(AuthContext);
 
+  if ( !dish ) {
+    return null;
+  }
+
   return (
     <Dish dishId={dishId} name={name} price={price} ingredients={ingredients} showCounter={loggedIn} />
   );
