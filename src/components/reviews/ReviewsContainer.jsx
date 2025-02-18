@@ -20,8 +20,11 @@ export const ReviewsContainer = ({ restaurantId }) => {
 
   useEffect(() => {
     dispatch(getReviews(restaurantId));
-    dispatch(getUsers());
   }, [restaurantId, dispatch]);
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
 
   if (requestStatusReviews === REQUEST_STATUS_PENDING || requestStatusReviews === REQUEST_STATUS_IDLE) {
     return <Loader text="Loading reviews..." />;
