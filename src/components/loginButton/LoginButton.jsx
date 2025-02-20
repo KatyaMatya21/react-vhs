@@ -10,7 +10,7 @@ export const LoginButton = () => {
       onClick={toggleLoggedIn}
       type={"button"}
     >
-      {loggedIn ? "Logout" : "Login"}
+      {loggedIn.isLogged ? "Logout" : "Login"}
     </Button>
   );
 };

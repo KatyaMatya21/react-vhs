@@ -1,38 +1,29 @@
-import { useDispatch, useSelector } from "react-redux";
 import { Dish } from "./Dish.jsx";
-import { use, useEffect } from "react";
+import { use } from "react";
 import { AuthContext } from "../authContext/AuthContext.js";
-import { REQUEST_STATUS_IDLE, REQUEST_STATUS_PENDING, REQUEST_STATUS_REJECTED } from "../../redux/constants.js";
+import { useGetDishByIdQuery } from "../../redux/services/api/api.js";
 import { Loader } from "../loader/Loader.jsx";
 import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";
-import { selectDishById, selectGetDishByIdRequestStatus } from "../../redux/entities/dishes/slice.js";
-import { getDishById } from "../../redux/entities/dishes/getDishById.js";
 
 export const DishPageContainer = ({ dishId }) => {
-  const dispatch = useDispatch();
-  const requestStatus = useSelector(selectGetDishByIdRequestStatus);
-  const dish = useSelector((state) => selectDishById(state, dishId));
+  const { data, isLoading, isError } = useGetDishByIdQuery(dishId);
 
-  useEffect(() => {
-    dispatch(getDishById(dishId));
-  }, [dishId, dispatch]);
-
-  if (requestStatus === REQUEST_STATUS_PENDING || requestStatus === REQUEST_STATUS_IDLE) {
+  if (isLoading) {
     return <Loader text="Loading dish..." />;
   }
 
-  if (requestStatus === REQUEST_STATUS_REJECTED) {
+  if (isError) {
     return <ErrorBlock text="Error with data"/>;
   }
 
-  const { name, price, ingredients } = dish || {};
-  const { loggedIn } = use(AuthContext);
-
-  if (!dish) {
+  if (!data) {
     return null;
   }
 
+  const { name, price, ingredients } = data || {};
+  const { loggedIn } = use(AuthContext);
+
   return (
-    <Dish dishId={dishId} name={name} price={price} ingredients={ingredients} showCounter={loggedIn} />
+    <Dish dishId={dishId} name={name} price={price} ingredients={ingredients} showCounter={loggedIn.isLogged} />
   );
 };

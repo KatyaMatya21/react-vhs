@@ -1,10 +1,13 @@
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/entities/restaurants/slice.js";
 import { RestaurantTabsButton } from "./RestaurantTabsButton.jsx";
 import { NavLink } from "react-router";
+import { useGetRestaurantsQuery } from "../../redux/services/api/api.js";
 
 export const RestaurantTabsButtonContainer = ({ id }) => {
-  const restaurant = useSelector((state) => selectRestaurantById(state, id));
+  const { restaurant } = useGetRestaurantsQuery(undefined, {
+    selectFromResult: ({ data }) => ({
+      restaurant: data?.find((restaurant) => restaurant.id === id),
+    }),
+  })
 
   const { name } = restaurant || {};
 
