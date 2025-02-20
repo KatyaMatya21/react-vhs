@@ -1,36 +1,26 @@
 import styles from "./RestaurantInfo.module.less";
-import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router";
 import { RestaurantNav } from "../restaurantNav/RestaurantNav.jsx";
-import { useEffect } from "react";
-import { REQUEST_STATUS_IDLE, REQUEST_STATUS_PENDING, REQUEST_STATUS_REJECTED } from "../../redux/constants.js";
 import { Loader } from "../loader/Loader.jsx";
 import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";
-import { getRestaurantById } from "../../redux/entities/restaurants/getRestaurantById.js";
-import { selectGetRestaurantByIdRequestStatus, selectRestaurantById } from "../../redux/entities/restaurants/slice.js";
+import { useGetRestaurantByIdQuery } from "../../redux/services/api/api.js";
 
 export const RestaurantInfo = ({ restaurantId }) => {
-  const dispatch = useDispatch();
-  const requestStatus = useSelector(selectGetRestaurantByIdRequestStatus);
-  const restaurant = useSelector( (state) => selectRestaurantById(state, restaurantId));
+  const { data, isLoading, isError } = useGetRestaurantByIdQuery(restaurantId);
 
-  useEffect(() => {
-    dispatch(getRestaurantById(restaurantId));
-  }, [restaurantId, dispatch]);
-
-  if (requestStatus === REQUEST_STATUS_PENDING || requestStatus === REQUEST_STATUS_IDLE) {
+  if (isLoading) {
     return <Loader text="Loading restaurant..." />;
   }
 
-  if (requestStatus === REQUEST_STATUS_REJECTED) {
+  if (isError) {
     return <ErrorBlock text="Error with data"/>;
   }
 
-  const { name, description, img } = restaurant || {};
-
-  if (!name) {
+  if (!data) {
     return null;
   }
+
+  const { name, description, img } = data || {};
 
   return (
     <>

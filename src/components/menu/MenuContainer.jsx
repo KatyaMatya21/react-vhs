@@ -1,31 +1,26 @@
-import { useDispatch, useSelector } from "react-redux";
 import { Menu } from "./Menu.jsx";
-import { selectGetDishesRequestStatus } from "../../redux/entities/dishes/slice.js";
-import { useEffect } from "react";
-import { getDishes } from "../../redux/entities/dishes/getDishes.js";
-import { REQUEST_STATUS_IDLE, REQUEST_STATUS_PENDING, REQUEST_STATUS_REJECTED } from "../../redux/constants.js";
 import { Loader } from "../loader/Loader.jsx";
 import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";
-import { selectRestaurantById } from "../../redux/entities/restaurants/slice.js";
+import { useGetDishesByRestaurantIdQuery } from "../../redux/services/api/api.js";
 
 export const MenuContainer = ({ restaurantId }) => {
-  const dispatch = useDispatch();
-  const requestStatus = useSelector(selectGetDishesRequestStatus);
-  const menuIds = useSelector((state) => selectRestaurantById(state, restaurantId)).menu;
+  const { data, isLoading, isError } = useGetDishesByRestaurantIdQuery(restaurantId);
 
-  useEffect(() => {
-    dispatch(getDishes(restaurantId));
-  }, [restaurantId, dispatch]);
-
-  if (requestStatus === REQUEST_STATUS_PENDING || requestStatus === REQUEST_STATUS_IDLE) {
-    return <Loader text="Loading menu..." />;
+  if (isLoading) {
+    return <Loader text="Loading dishes..." />;
   }
 
-  if (requestStatus === REQUEST_STATUS_REJECTED) {
+  if (isError) {
     return <ErrorBlock text="Error with data"/>;
   }
 
+  if (!data?.length) {
+    return null;
+  }
+
+  const menuIds = data.map((item) => item.id);
+
   return (
-    <Menu menuIds={menuIds} />
+    <Menu menuIds={menuIds} restaurantId={restaurantId} />
   );
 };

@@ -8,7 +8,7 @@ export const UserNav = () => {
 
   return (
     <div className={styles.user}>
-      {loggedIn && <span>Hi User!</span>}
+      {loggedIn.isLogged && <span>Hi User!</span>}
       <LoginButton/>
     </div>
   );

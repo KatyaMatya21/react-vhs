@@ -26,6 +26,14 @@
   &:last-child {
     margin-right: 0;
   }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+
+    background-color: @violet;
+    color: @yellow-light;
+  }
 }
 
 .button.dark {
