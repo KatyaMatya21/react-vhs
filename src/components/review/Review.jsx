@@ -1,7 +1,9 @@
 import { IconStar } from "../icons/IconStar.jsx";
 import styles from "./Review.module.less";
+import { Button } from "../button/Button.jsx";
+import { IconPen } from "../icons/IconPen.jsx";
 
-export const Review = ({ name, rating, text }) => {
+export const Review = ({ name, rating, text, showEdit, onEditClick }) => {
   return (
     <div className={styles.review}>
       <div className={styles.user}>
@@ -13,6 +15,8 @@ export const Review = ({ name, rating, text }) => {
         </span>
       </div>
       <div>{text}</div>
+
+      {showEdit && <Button onClick={onEditClick} type="button" size="square"><IconPen /></Button>}
     </div>
 );
 };

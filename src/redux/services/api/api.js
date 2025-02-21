@@ -33,6 +33,14 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: [{ type: "reviews", id: "ALL" }],
     }),
+    updateReview: builder.mutation({
+      query: ({ reviewId, review }) => ({
+        url: `/review/${reviewId}`,
+        body: review,
+        method: "PATCH",
+      }),
+      invalidatesTags: [{ type: "reviews", id: "ALL" }],
+    }),
   })
 });
 
@@ -44,4 +52,5 @@ export const {
   useGetReviewsByRestaurantIdQuery,
   useGetUsersQuery,
   useAddReviewMutation,
+  useUpdateReviewMutation,
 } = apiSlice;
