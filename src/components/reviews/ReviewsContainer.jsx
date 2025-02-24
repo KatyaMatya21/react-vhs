@@ -1,6 +1,7 @@
+"use client";
 import { ReviewForm } from "../reviewForm/ReviewForm.jsx";
 import { use, useCallback } from "react";
-import { AuthContext } from "../authContext/AuthContext.js";
+import { UserAuthContext } from "../authContext/UserAuthContext.js";
 import { Reviews } from "./Reviews.jsx";
 import { Loader } from "../loader/Loader.jsx";
 import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";
@@ -16,7 +17,7 @@ export const ReviewsContainer = ({ restaurantId }) => {
 
   const [addReview, { isLoading }] = useAddReviewMutation();
 
-  const { loggedIn } = use(AuthContext);
+  const { loggedIn } = use(UserAuthContext);
 
   const handleAddReview = useCallback(
     (review) => {

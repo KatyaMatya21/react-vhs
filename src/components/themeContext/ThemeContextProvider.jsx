@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useState } from "react";
 import { ThemeContext } from "./ThemeContext.js";
 

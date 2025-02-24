@@ -1,22 +1,24 @@
-import styles from "./RestaurantNav.module.less";
-import { NavLink } from "react-router";
-import classNames from "classnames";
+import styles from "./RestaurantNav.module.scss";
+import Link from "next/link";
+import {usePathname} from "next/navigation";
 
 export const RestaurantNav = ({ restaurantId }) => {
+  const pathname = usePathname();
+
   return (
     <div className={styles.nav}>
-      <NavLink
-        to={`/restaurants/${restaurantId}/menu`}
-        className={({ isActive }) => (classNames({[styles.active]: isActive}))}
+      <Link
+        href={`/restaurants/${restaurantId}/menu`}
+        className={pathname.indexOf('reviews') === -1 ? styles.active : ""}
       >
         Menu
-      </NavLink>
-      <NavLink
-        to={`/restaurants/${restaurantId}/reviews`}
-        className={({ isActive}) => (classNames({[styles.active]: isActive}))}
+      </Link>
+      <Link
+        href={`/restaurants/${restaurantId}/reviews`}
+        className={pathname.indexOf('reviews') !== -1 ? styles.active : ""}
       >
         Reviews
-      </NavLink>
+      </Link>
     </div>
   );
 };

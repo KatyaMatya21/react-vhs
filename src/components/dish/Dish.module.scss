@@ -1,4 +1,4 @@
-@import "../../styles/variables.less";
+@import "../../styles/variables.scss";
 
 .dish {
   display: flex;
@@ -6,7 +6,7 @@
   padding: 15px;
   margin-right: 15px;
 
-  background-color: @yellow-light;
+  background-color: $yellow-light;
   border-radius: 15px;
 }
 
@@ -14,15 +14,15 @@
   display: flex;
   margin: 0 0 15px 0;
 
-  color: @violet;
+  color: $violet;
   text-transform: uppercase;
 
    a  {
-     color: @violet;
+     color: $violet;
      text-decoration: none;
 
      &:hover {
-       color: @orange;
+       color: $orange;
      }
    }
 }
@@ -31,7 +31,7 @@
   display: block;
   margin-left: auto;
 
-  color: @orange;
+  color: $orange;
 }
 
 .ingredients {
@@ -58,7 +58,7 @@
     width: 7px;
     height: 7px;
 
-    background-color: @violet;
+    background-color: $violet;
     border-radius: 50%;
   }
 }

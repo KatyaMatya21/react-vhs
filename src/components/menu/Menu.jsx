@@ -1,4 +1,5 @@
-import styles from "./Menu.module.less";
+"use client";
+import styles from "./Menu.module.scss";
 import { DishContainer } from "../dish/DishContainer.jsx";
 
 export const Menu = ({ menuIds, restaurantId }) => {

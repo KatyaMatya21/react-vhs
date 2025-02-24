@@ -1,4 +1,4 @@
-import styles from "./Loader.module.less";
+import styles from "./Loader.module.scss";
 
 export const Loader = ({ text }) => {
   return (

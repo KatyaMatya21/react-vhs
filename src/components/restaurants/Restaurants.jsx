@@ -1,13 +1,13 @@
+"use client";
 import { use } from "react";
 import { RestaurantTabs } from "../restaurantTabs/RestaurantTabs.jsx";
 import { CartContainer } from "../cart/CartContainer.jsx";
-import { AuthContext } from "../authContext/AuthContext.js";
-import { Outlet } from "react-router";
+import { UserAuthContext } from "../authContext/UserAuthContext.js";
 import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";
 import { Loader } from "../loader/Loader.jsx";
 import { useGetRestaurantsQuery } from "../../redux/services/api/api.js";
 
-export const Restaurants = () => {
+export const Restaurants = ({ children }) => {
   const { data, isLoading, isError } = useGetRestaurantsQuery();
 
   if (isLoading) {
@@ -23,12 +23,12 @@ export const Restaurants = () => {
   }
 
   const restaurantIds = data.map((item) => item.id);
-  const { loggedIn } = use(AuthContext);
+  const { loggedIn } = use(UserAuthContext);
 
   return (
     <>
       <RestaurantTabs restaurantIds={restaurantIds} />
-      <Outlet />
+      {children}
       {loggedIn.isLogged && <CartContainer />}
     </>
   );
