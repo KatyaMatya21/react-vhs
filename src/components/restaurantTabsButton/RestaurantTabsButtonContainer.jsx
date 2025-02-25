@@ -2,10 +2,10 @@
 import {RestaurantTabsButton} from "./RestaurantTabsButton.jsx";
 import Link from "next/link";
 import {useGetRestaurantsQuery} from "../../redux/services/api/api.js";
-import {useParams} from "next/navigation";
+import {usePathname} from "next/navigation";
 
 export const RestaurantTabsButtonContainer = ({ id }) => {
-  const pathname = useParams();
+  const pathname = usePathname();
 
   const { restaurant } = useGetRestaurantsQuery(undefined, {
     selectFromResult: ({ data }) => ({
@@ -23,7 +23,7 @@ export const RestaurantTabsButtonContainer = ({ id }) => {
     <Link
       href={`/restaurants/${id}`}
     >
-      <RestaurantTabsButton active={id===pathname.restaurantId} name={name} />
+      <RestaurantTabsButton active={!(pathname.indexOf(id) === -1)} name={name} />
     </Link>
   );
 };

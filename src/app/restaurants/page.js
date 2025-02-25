@@ -1,7 +1,5 @@
 const RestaurantsPage = () => {
-  return (
-    <>Choose restaurant</>
-  );
+  return "Choose restaurant";
 };
 
 export default RestaurantsPage;

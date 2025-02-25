@@ -1,4 +1,3 @@
-"use client";
 import {Restaurants} from "../../components/restaurants/Restaurants.jsx";
 
 const RestaurantsLayout = ({ children }) => {

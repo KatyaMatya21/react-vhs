@@ -1,9 +1,7 @@
-"use client";
-import {useParams} from "next/navigation";
 import {ReviewsContainer} from "../../../../components/reviews/ReviewsContainer.jsx";
 
-const ReviewsPage = () => {
-  const { restaurantId } = useParams();
+const ReviewsPage = async ({ params }) => {
+  const { restaurantId } = await params;
 
   return <ReviewsContainer restaurantId={restaurantId} />;
 };

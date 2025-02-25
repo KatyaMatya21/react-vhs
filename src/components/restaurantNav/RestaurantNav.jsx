@@ -1,3 +1,4 @@
+"use client";
 import styles from "./RestaurantNav.module.scss";
 import Link from "next/link";
 import {usePathname} from "next/navigation";

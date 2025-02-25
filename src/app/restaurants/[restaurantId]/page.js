@@ -1,9 +1,7 @@
-"use client";
 import {redirect} from 'next/navigation'
-import {useParams} from "next/navigation";
 
-const RestaurantPage = () => {
-  const { restaurantId } = useParams();
+const RestaurantPage = async ({ params }) => {
+  const { restaurantId } = await params;
   redirect(`/restaurants/${restaurantId}/menu`);
 };
 

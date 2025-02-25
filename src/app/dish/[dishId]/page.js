@@ -1,9 +1,7 @@
-"use client";
 import {DishPageContainer} from "../../../components/dish/DishPageContainer.jsx";
-import {useParams} from "next/navigation";
 
-const DishPage = () => {
-  const { dishId } = useParams();
+const DishPage = async ({ params }) => {
+  const { dishId } = await params;
 
   return <DishPageContainer dishId={dishId} />;
 };

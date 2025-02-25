@@ -1,35 +1,31 @@
-"use client";
-
-import {store} from "../redux/store.js";
 import {ThemeContextProvider} from "../components/themeContext/ThemeContextProvider.jsx";
 import {AuthContextProvider} from "../components/authContext/AuthContextProvider.jsx";
-import {ProgressBar} from "../components/progressBar/ProgressBar.jsx";
-import {Header} from "../components/header/Header.jsx";
-import {Footer} from "../components/footer/Footer.jsx";
-import {Provider} from "react-redux";
+import {ReduxProvider} from "../redux/provider.js";
+import {Layout} from "../components/layout/Layout.jsx";
 import '../styles/global.scss';
+
+export const metadata = {
+  title: "Restaurants",
+  description: "next js app",
+};
 
 const RootLayout = ({ children }) => {
   return (
     <html lang='en'>
     <head>
       <link rel='icon' type='image/svg+xml' href='/favicon.svg'/>
-      <title>Restaurants</title>
     </head>
     <body>
     <div id='root'>
-        <Provider store={store}>
+        <ReduxProvider>
           <ThemeContextProvider>
             <AuthContextProvider>
-              <ProgressBar />
-              <Header />
-              <main className="main">
+              <Layout>
                 {children}
-              </main>
-              <Footer />
+              </Layout>
             </AuthContextProvider>
           </ThemeContextProvider>
-        </Provider>
+        </ReduxProvider>
       </div>
       </body>
     </html>
