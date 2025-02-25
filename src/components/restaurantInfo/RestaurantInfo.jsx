@@ -1,11 +1,11 @@
-import styles from "./RestaurantInfo.module.less";
-import { Outlet } from "react-router";
+"use client";
+import styles from "./RestaurantInfo.module.scss";
 import { RestaurantNav } from "../restaurantNav/RestaurantNav.jsx";
 import { Loader } from "../loader/Loader.jsx";
 import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";
 import { useGetRestaurantByIdQuery } from "../../redux/services/api/api.js";
 
-export const RestaurantInfo = ({ restaurantId }) => {
+export const RestaurantInfo = ({ children, restaurantId }) => {
   const { data, isLoading, isError } = useGetRestaurantByIdQuery(restaurantId);
 
   if (isLoading) {
@@ -34,7 +34,8 @@ export const RestaurantInfo = ({ restaurantId }) => {
         </div>
       </div>
       <RestaurantNav restaurantId={restaurantId}/>
-      <Outlet />
+
+      {children}
     </>
   );
 };

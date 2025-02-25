@@ -1,8 +1,8 @@
 import { useFormReview } from "./useFormReview.js";
 import { Counter } from "../counter/Counter";
 import { FormGroup } from "../formGroup/FormGroup.jsx";
-import { Button } from "../button/Button.jsx";
-import styles from "./ReviewForm.module.less";
+import { CustomButton } from "../button/CustomButton.jsx";
+import styles from "./ReviewForm.module.scss";
 
 export const ReviewForm = ({ onSubmit, disableSubmit }) => {
   const { form, setText, setRatingDecrement, setRatingIncrement, setClear } = useFormReview();
@@ -26,15 +26,15 @@ export const ReviewForm = ({ onSubmit, disableSubmit }) => {
       />
 
       <div className={styles.buttonGroup}>
-        <Button
+        <CustomButton
           onClick={() => onSubmit({ text, rating })}
           type={"button"}
           disabled={disableSubmit}
         >
           Send
-        </Button>
+        </CustomButton>
 
-        <Button type={"button"} onClick={setClear}>Clear form</Button>
+        <CustomButton type={"button"} onClick={setClear}>Clear form</CustomButton>
       </div>
 
     </form>

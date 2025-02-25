@@ -1,8 +1,12 @@
-import { RestaurantTabsButton } from "./RestaurantTabsButton.jsx";
-import { NavLink } from "react-router";
-import { useGetRestaurantsQuery } from "../../redux/services/api/api.js";
+"use client";
+import {RestaurantTabsButton} from "./RestaurantTabsButton.jsx";
+import Link from "next/link";
+import {useGetRestaurantsQuery} from "../../redux/services/api/api.js";
+import {usePathname} from "next/navigation";
 
 export const RestaurantTabsButtonContainer = ({ id }) => {
+  const pathname = usePathname();
+
   const { restaurant } = useGetRestaurantsQuery(undefined, {
     selectFromResult: ({ data }) => ({
       restaurant: data?.find((restaurant) => restaurant.id === id),
@@ -16,10 +20,10 @@ export const RestaurantTabsButtonContainer = ({ id }) => {
   }
 
   return (
-    <NavLink
-      to={`/restaurants/${id}`}
+    <Link
+      href={`/restaurants/${id}`}
     >
-      {({ isActive }) => <RestaurantTabsButton active={isActive} name={name} />}
-    </NavLink>
+      <RestaurantTabsButton active={!(pathname.indexOf(id) === -1)} name={name} />
+    </Link>
   );
 };

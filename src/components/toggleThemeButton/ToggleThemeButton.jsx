@@ -1,7 +1,8 @@
+"use client";
 import { use } from "react";
 import { ThemeContext } from "../themeContext/ThemeContext.js";
 import { IconTheme } from "../icons/IconTheme.jsx";
-import styles from "./ToggleThemeButton.module.less";
+import styles from "./ToggleThemeButton.module.scss";
 import classNames from "classnames";
 
 export const ToggleThemeButton = () => {

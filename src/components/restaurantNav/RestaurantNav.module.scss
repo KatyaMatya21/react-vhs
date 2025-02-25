@@ -1,4 +1,4 @@
-@import "../../styles/variables.less";
+@import "../../styles/variables.scss";
 
 .nav {
   display: flex;
@@ -6,7 +6,7 @@
   margin-bottom: 40px;
 
   border-radius: 15px;
-  background-color: @yellow-light;
+  background-color: $yellow-light;
 
   a {
     display: block;
@@ -15,24 +15,24 @@
 
     text-align: center;
     text-transform: uppercase;
-    color: @violet;
+    color: $violet;
     text-decoration: none;
 
     border-radius: 15px;
-    background-color: @yellow-light;
+    background-color: $yellow-light;
 
     &:hover {
-      color: @yellow-light;
-      background-color: @orange;
+      color: $yellow-light;
+      background-color: $orange;
     }
 
     &.active {
-      color: @yellow-light;
-      background-color: @orange;
+      color: $yellow-light;
+      background-color: $orange;
 
       &:hover {
-        color: @yellow-light;
-        background-color: @violet;
+        color: $yellow-light;
+        background-color: $violet;
       }
     }
   }

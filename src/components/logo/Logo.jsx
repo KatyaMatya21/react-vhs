@@ -1,11 +1,12 @@
-import styles from "./Logo.module.less";
+import styles from "./Logo.module.scss";
 import logo from "./duck.svg";
-import { Link } from "react-router";
+import Link from "next/link";
+import Image from 'next/image'
 
 export const Logo = () => {
   return (
-    <Link to="/" className={styles.logo} title="Home">
-      <img src={logo} width="50px" height="50px" alt="Logo"/>
+    <Link href="/" className={styles.logo} title="Home">
+      <Image src={logo} width={50} height={50} alt="Logo" priority />
     </Link>
   );
 };

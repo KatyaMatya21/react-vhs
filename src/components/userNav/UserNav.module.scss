@@ -1,4 +1,4 @@
-@import "../../styles/variables.less";
+@import "../../styles/variables.scss";
 
 .user {
   display: flex;
@@ -15,7 +15,7 @@
     width: 100%;
     margin-right: 10px;
 
-    color: @yellow-light;
+    color: $yellow-light;
     text-align: center;
   }
 }

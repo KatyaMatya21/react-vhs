@@ -1,6 +1,6 @@
-@import "./normalize.less";
-@import "./variables.less";
-@import "./fonts.less";
+@import "./normalize.scss";
+@import "./variables.scss";
+@import "./fonts.scss";
 
 body {
   min-height: 100%;
@@ -11,9 +11,9 @@ body {
   font-family: "Roboto", "Arial", sans-serif;
   font-weight: 300;
   font-style: normal;
-  color: @violet;
+  color: $violet;
 
-  background-color: @violet;
+  background-color: $violet;
 }
 
 #root {

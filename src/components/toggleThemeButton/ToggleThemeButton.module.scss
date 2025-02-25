@@ -1,4 +1,4 @@
-@import "../../styles/variables.less";
+@import "../../styles/variables.scss";
 
 .toggleThemeButton {
   display: block;
@@ -20,24 +20,24 @@
 
   &.light {
     svg path {
-      fill: @yellow-light;
+      fill: $yellow-light;
     }
 
     &:hover {
       svg path {
-        fill: @yellow;
+        fill: $yellow;
       }
     }
   }
 
   &.dark {
     svg path {
-      fill: @orange;
+      fill: $orange;
     }
 
     &:hover {
       svg path {
-        fill: @yellow;
+        fill: $yellow;
       }
     }
   }

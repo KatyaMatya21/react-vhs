@@ -1,3 +1,4 @@
+"use client";
 import { Menu } from "./Menu.jsx";
 import { Loader } from "../loader/Loader.jsx";
 import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";

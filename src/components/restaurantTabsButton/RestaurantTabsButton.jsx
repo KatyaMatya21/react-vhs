@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import styles from "./RestaurantTabsButton.module.less";
+import styles from "./RestaurantTabsButton.module.scss";
 
 export const RestaurantTabsButton = ({ active, name }) => {
   return (

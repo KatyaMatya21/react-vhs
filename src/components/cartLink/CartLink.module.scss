@@ -1,4 +1,4 @@
-@import "../../styles/variables.less";
+@import "../../styles/variables.scss";
 
 .cartLink {
   display: block;
@@ -16,13 +16,13 @@
     height: 40px;
 
     path {
-      fill: @yellow-light;
+      fill: $yellow-light;
     }
   }
 
   &:hover {
     svg path {
-      fill: @yellow;
+      fill: $yellow;
     }
   }
 }

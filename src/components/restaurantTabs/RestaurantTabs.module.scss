@@ -1,4 +1,4 @@
-@import "../../styles/variables.less";
+@import "../../styles/variables.scss";
 
 .tabs {
   position: relative;
@@ -9,7 +9,7 @@
   flex-direction: column;
   width: calc(100% + 40px);
 
-  background-color: @yellow-light;
+  background-color: $yellow-light;
   border-radius: 15px;
 
   @media (min-width: 768px) {

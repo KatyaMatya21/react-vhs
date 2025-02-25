@@ -1,4 +1,4 @@
-import styles from "./RestaurantTabs.module.less";
+import styles from "./RestaurantTabs.module.scss";
 import { RestaurantTabsButtonContainer } from "../restaurantTabsButton/RestaurantTabsButtonContainer.jsx";
 
 export const RestaurantTabs = ({ restaurantIds }) => {

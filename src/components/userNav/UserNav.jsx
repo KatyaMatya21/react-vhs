@@ -1,10 +1,11 @@
+"use client";
 import { use } from "react";
 import { LoginButton } from "../loginButton/LoginButton.jsx";
-import { AuthContext } from "../authContext/AuthContext.js";
-import styles from "./UserNav.module.less";
+import { UserAuthContext } from "../authContext/UserAuthContext.js";
+import styles from "./UserNav.module.scss";
 
 export const UserNav = () => {
-  const { loggedIn } = use(AuthContext);
+  const { loggedIn } = use(UserAuthContext);
 
   return (
     <div className={styles.user}>

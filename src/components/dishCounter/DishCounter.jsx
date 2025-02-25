@@ -1,3 +1,4 @@
+"use client";
 import { useCount } from "./useCount.js";
 import { Counter } from "../counter/Counter";
 

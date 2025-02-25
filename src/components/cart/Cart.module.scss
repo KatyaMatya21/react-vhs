@@ -1,4 +1,4 @@
-@import "../../styles/variables.less";
+@import "../../styles/variables.scss";
 
 .cart {
   margin-bottom: 40px;
@@ -27,7 +27,7 @@
   margin-bottom: 20px;
   padding: 15px 0;
 
-  border-bottom: 2px solid @yellow-light;
+  border-bottom: 2px solid $yellow-light;
 
   &:last-child {
     border-bottom: none;

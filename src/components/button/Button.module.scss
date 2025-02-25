@@ -1,4 +1,4 @@
-@import "../../styles/variables.less";
+@import "../../styles/variables.scss";
 
 .button {
   display: block;
@@ -8,17 +8,17 @@
 
   font-size: 20px;
   font-weight: 300;
-  color: @violet;
+  color: $violet;
   text-transform: uppercase;
 
   border: none;
   border-radius: 5px;
-  background-color: @yellow-light;
+  background-color: $yellow-light;
 
   &:hover {
-    color: @yellow-light;
+    color: $yellow-light;
 
-    background-color: @orange;
+    background-color: $orange;
 
     cursor: pointer;
   }
@@ -31,18 +31,18 @@
     opacity: 0.5;
     pointer-events: none;
 
-    background-color: @violet;
-    color: @yellow-light;
+    background-color: $violet;
+    color: $yellow-light;
   }
 }
 
 .button.dark {
-  background-color: @orange;
-  color: @yellow-light;
+  background-color: $orange;
+  color: $yellow-light;
 
   &:hover {
-    background-color: @yellow-light;
-    color: @orange;
+    background-color: $yellow-light;
+    color: $orange;
   }
 }
 
@@ -51,15 +51,15 @@
   padding: 10px;
   margin-right: 0;
 
-  background-color: @orange;
+  background-color: $orange;
   border-radius: 5px;
-  border: 2px solid @orange;
+  border: 2px solid $orange;
 
   svg {
     display: block;
 
     path {
-      fill: @yellow-light;
+      fill: $yellow-light;
     }
   }
 
@@ -70,26 +70,26 @@
 
     svg {
       path {
-        fill: @orange;
+        fill: $orange;
       }
     }
   }
 }
 
 .button.square.dark {
-  background-color: @violet;
-  border: 2px solid @violet;
+  background-color: $violet;
+  border: 2px solid $violet;
 
   svg path {
-    fill: @yellow-light;
+    fill: $yellow-light;
   }
 
   &:hover {
     background-color: transparent;
-    border-color: @violet;
+    border-color: $violet;
 
     svg path {
-      fill: @violet;
+      fill: $violet;
     }
   }
 }
