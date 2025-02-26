@@ -1,15 +1,14 @@
-import { Header } from "../header/Header.jsx";
-import { Footer } from "../footer/Footer.jsx";
-import { ProgressBar } from "../progressBar/ProgressBar.jsx";
-import { Outlet } from "react-router";
+import {Header} from "../header/Header.jsx";
+import {Footer} from "../footer/Footer.jsx";
+import {ProgressBar} from "../progressBar/ProgressBar.jsx";
 
-export const Layout = () => {
+export const Layout = ( { children }) => {
   return (
     <>
       <ProgressBar />
       <Header />
       <main className="main">
-        <Outlet />
+        {children}
       </main>
       <Footer />
     </>

@@ -1,4 +1,4 @@
-@import "../../styles/variables.less";
+@import "../../styles/variables.scss";
 
 .button {
   display: block;
@@ -7,16 +7,16 @@
 
   font-size: 20px;
   font-weight: 300;
-  color: @violet;
+  color: $violet;
   text-transform: uppercase;
 
-  background-color: @yellow-light;
+  background-color: $yellow-light;
   border: none;
 
   &:hover {
-    color: @yellow;
+    color: $yellow;
 
-    background-color: @violet;
+    background-color: $violet;
     border-radius: 15px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -26,17 +26,17 @@
 }
 
 .buttonActive {
-  color: @yellow-light;
+  color: $yellow-light;
 
-  background-color: @violet;
+  background-color: $violet;
   border-radius: 15px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 
 
   &:hover {
-    color: @yellow;
+    color: $yellow;
 
-    background-color: @violet;
+    background-color: $violet;
   }
 }

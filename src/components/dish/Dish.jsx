@@ -1,12 +1,12 @@
 import { DishCounter } from "../dishCounter/DishCounter";
-import styles from "./Dish.module.less";
-import { Link } from "react-router";
+import styles from "./Dish.module.scss";
+import Link from "next/link";
 
 export const Dish = ({ dishId, name, price, ingredients, showCounter }) => {
   return (
     <div className={styles.dish}>
       <h4 className={styles.title}>
-        <Link to={`/dish/${dishId}`}>{name}</Link>
+        <Link href={`/dish/${dishId}`}>{name}</Link>
         <span className={styles.price}>{price} €</span>
       </h4>
       <ul className={styles.ingredients}>

@@ -1,4 +1,4 @@
-import styles from "./ErrorBlock.module.less";
+import styles from "./ErrorBlock.module.scss";
 import errorDuckPng from "./error_duck.png";
 import errorDuckWebp from "./error_duck.webp";
 

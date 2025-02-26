@@ -1,6 +1,7 @@
+"use client";
 import { Dish } from "./Dish.jsx";
 import { use } from "react";
-import { AuthContext } from "../authContext/AuthContext.js";
+import { UserAuthContext } from "../authContext/UserAuthContext.js";
 import { useGetDishesByRestaurantIdQuery } from "../../redux/services/api/api.js";
 
 export const DishContainer = ({ dishId, restaurantId }) => {
@@ -11,7 +12,7 @@ export const DishContainer = ({ dishId, restaurantId }) => {
   })
 
   const { name, price, ingredients } = dish || {};
-  const { loggedIn } = use(AuthContext);
+  const { loggedIn } = use(UserAuthContext);
 
   if ( !dish ) {
     return null;

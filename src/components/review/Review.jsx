@@ -1,5 +1,5 @@
 import { IconStar } from "../icons/IconStar.jsx";
-import styles from "./Review.module.less";
+import styles from "./Review.module.scss";
 
 export const Review = ({ name, rating, text }) => {
   return (

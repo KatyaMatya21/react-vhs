@@ -1,4 +1,4 @@
-@import "../../styles/variables.less";
+@import "../../styles/variables.scss";
 
 .formGroup {
   margin-bottom: 20px;
@@ -13,9 +13,9 @@
     width: 100%;
     padding: 10px;
 
-    color: @violet;
+    color: $violet;
 
-    border: 2px solid @yellow-light;
+    border: 2px solid $yellow-light;
     box-sizing: border-box;
   }
 }
