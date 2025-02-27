@@ -1,4 +1,4 @@
-import { ErrorBlock } from "../components/errorBlock/ErrorBlock.jsx";
+import {ErrorBlock} from "../components/errorBlock/ErrorBlock.jsx";
 
 export const ErrorPage = () => {
   return (

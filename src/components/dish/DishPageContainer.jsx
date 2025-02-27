@@ -1,30 +1,14 @@
-"use client";
-import { Dish } from "./Dish.jsx";
-import { use } from "react";
-import { UserAuthContext } from "../authContext/UserAuthContext.js";
-import { useGetDishByIdQuery } from "../../redux/services/api/api.js";
-import { Loader } from "../loader/Loader.jsx";
-import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";
+import {getDishById} from "../../services/getDishById.js";
+import {DishContainer} from "./DishContainer.jsx";
 
-export const DishPageContainer = ({ dishId }) => {
-  const { data, isLoading, isError } = useGetDishByIdQuery(dishId);
+export const DishPageContainer = async ({ dishId }) => {
+  const dish = await getDishById(dishId);
 
-  if (isLoading) {
-    return <Loader text="Loading dish..." />;
-  }
-
-  if (isError) {
-    return <ErrorBlock text="Error with data"/>;
-  }
-
-  if (!data) {
+  if (!dish) {
     return null;
   }
 
-  const { name, price, ingredients } = data || {};
-  const { loggedIn } = use(UserAuthContext);
-
   return (
-    <Dish dishId={dishId} name={name} price={price} ingredients={ingredients} showCounter={loggedIn.isLogged} />
+    <DishContainer dish={dish} />
   );
 };

@@ -1,17 +1,10 @@
 "use client";
-import { Dish } from "./Dish.jsx";
-import { use } from "react";
-import { UserAuthContext } from "../authContext/UserAuthContext.js";
-import { useGetDishesByRestaurantIdQuery } from "../../redux/services/api/api.js";
+import {Dish} from "./Dish.jsx";
+import {use} from "react";
+import {UserAuthContext} from "../authContext/UserAuthContext.js";
 
-export const DishContainer = ({ dishId, restaurantId }) => {
-  const { dish } = useGetDishesByRestaurantIdQuery(restaurantId, {
-    selectFromResult: ({ data }) => ({
-      dish: data?.find((dish) => dish.id === dishId),
-    }),
-  })
-
-  const { name, price, ingredients } = dish || {};
+export const DishContainer = ({ dish }) => {
+  const { name, price, ingredients, id } = dish || {};
   const { loggedIn } = use(UserAuthContext);
 
   if ( !dish ) {
@@ -19,6 +12,6 @@ export const DishContainer = ({ dishId, restaurantId }) => {
   }
 
   return (
-    <Dish dishId={dishId} name={name} price={price} ingredients={ingredients} showCounter={loggedIn.isLogged} />
+    <Dish dishId={id} name={name} price={price} ingredients={ingredients} showCounter={loggedIn.isLogged} />
   );
 };

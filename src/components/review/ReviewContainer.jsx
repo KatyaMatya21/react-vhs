@@ -1,29 +1,18 @@
 "use client";
-import { Review } from "./Review.jsx";
-import {
-  useGetReviewsByRestaurantIdQuery,
-  useGetUsersQuery
-} from "../../redux/services/api/api.js";
-import { Loader } from "../loader/Loader.jsx";
+import {Review} from "./Review.jsx";
+import {use} from "react";
+import {UsersContext} from "../usersContextProvider/index.js";
 
-export const ReviewContainer = ({ id, restaurantId }) => {
-  const { review, isLoading: reviewLoading } = useGetReviewsByRestaurantIdQuery(restaurantId, {
-    selectFromResult: ({ data }) => ({
-      review: data?.find((review) => review.id === id),
-    }),
-  });
+export const ReviewContainer = ({ review }) => {
+  const { text, rating, userId } = review || {};
 
-  const { user, isLoading: userLoading } = useGetUsersQuery(undefined, {
-    skip: !review?.userId,
-    selectFromResult: ({ data }) => ({
-      user: data?.find((user) => user.id === review?.userId),
-    }),
-  });
-
-  if (reviewLoading || userLoading) return <Loader text="Loading review..." />;
-
-  const { text, rating } = review || {};
+  const users = use(UsersContext);
+  const user = users?.find((user) => user.id === userId);
   const { name } = user || {};
+
+  if (!user?.name) {
+    return null;
+  }
 
   return (
     <Review name={name} rating={rating} text={text} />

@@ -1,9 +1,7 @@
-import {ReviewsContainer} from "../../../../components/reviews/ReviewsContainer.jsx";
+import RestaurantReviewsPage from "../../../../pages/RestaurantReviewsPage.jsx";
 
-const ReviewsPage = async ({ params }) => {
-  const { restaurantId } = await params;
-
-  return <ReviewsContainer restaurantId={restaurantId} />;
+export const generateStaticParams = async () => {
+  return [{ restaurantId: "bb8afbec-2fec-491f-93e9-7f13950dd80b" }, { restaurantId: "d9241927-09e1-44f3-8986-a76346869037" },];
 };
 
-export default ReviewsPage;
+export default RestaurantReviewsPage;

@@ -1,4 +1,4 @@
-import { DishCounter } from "../dishCounter/DishCounter";
+import {DishCounter} from "../dishCounter/DishCounter";
 import styles from "./Dish.module.scss";
 import Link from "next/link";
 

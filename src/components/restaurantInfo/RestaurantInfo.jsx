@@ -1,26 +1,8 @@
-"use client";
 import styles from "./RestaurantInfo.module.scss";
 import { RestaurantNav } from "../restaurantNav/RestaurantNav.jsx";
-import { Loader } from "../loader/Loader.jsx";
-import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";
-import { useGetRestaurantByIdQuery } from "../../redux/services/api/api.js";
 
-export const RestaurantInfo = ({ children, restaurantId }) => {
-  const { data, isLoading, isError } = useGetRestaurantByIdQuery(restaurantId);
-
-  if (isLoading) {
-    return <Loader text="Loading restaurant..." />;
-  }
-
-  if (isError) {
-    return <ErrorBlock text="Error with data"/>;
-  }
-
-  if (!data) {
-    return null;
-  }
-
-  const { name, description, img } = data || {};
+export const RestaurantInfo = ({ restaurant, children }) => {
+  const { name, description, img, id } = restaurant || {};
 
   return (
     <>
@@ -33,8 +15,7 @@ export const RestaurantInfo = ({ children, restaurantId }) => {
           <img src={img} alt={name}/>
         </div>
       </div>
-      <RestaurantNav restaurantId={restaurantId}/>
-
+      <RestaurantNav restaurantId={id}/>
       {children}
     </>
   );

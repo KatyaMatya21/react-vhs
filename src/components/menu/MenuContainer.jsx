@@ -1,27 +1,14 @@
-"use client";
-import { Menu } from "./Menu.jsx";
-import { Loader } from "../loader/Loader.jsx";
-import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";
-import { useGetDishesByRestaurantIdQuery } from "../../redux/services/api/api.js";
+import {Menu} from "./Menu.jsx";
+import {getDishesByRestaurantId} from "../../services/getDishesByRestaurantId.js";
 
-export const MenuContainer = ({ restaurantId }) => {
-  const { data, isLoading, isError } = useGetDishesByRestaurantIdQuery(restaurantId);
+export const MenuContainer = async ({ restaurantId }) => {
+  const dishes = await getDishesByRestaurantId(restaurantId);
 
-  if (isLoading) {
-    return <Loader text="Loading dishes..." />;
-  }
-
-  if (isError) {
-    return <ErrorBlock text="Error with data"/>;
-  }
-
-  if (!data?.length) {
+  if (!dishes.length) {
     return null;
   }
 
-  const menuIds = data.map((item) => item.id);
-
   return (
-    <Menu menuIds={menuIds} restaurantId={restaurantId} />
+    <Menu dishes={dishes} />
   );
 };

@@ -1,11 +1,11 @@
 "use client";
-import { use } from "react";
+import {use} from "react";
 import classNames from "classnames";
-import { ThemeContext } from "../themeContext/ThemeContext.js";
+import {ThemeContext} from "../themeContext/ThemeContext.js";
 import styles from "./Button.module.scss";
 
 export const CustomButton = ({ children, type, onClick, size, disabled }) => {
-  const { theme } = use(ThemeContext);
+  const {theme} = use(ThemeContext);
 
   return (
     <button

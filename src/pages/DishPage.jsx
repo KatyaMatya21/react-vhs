@@ -1,8 +1,14 @@
-import { useParams } from "react-router";
-import { DishPageContainer } from "../components/dish/DishPageContainer.jsx";
+import {DishPageContainer} from "../components/dish/DishPageContainer.jsx";
+import {Loader} from "../components/loader/Loader.jsx";
+import {Suspense} from "react";
 
-export const DishPage = () => {
-  const { dishId } = useParams();
+const DishPage = async ({ params }) => {
+  const { dishId } = await params;
 
-  return <DishPageContainer dishId={dishId} />;
+  return (
+    <Suspense fallback={<Loader text="Loading dish..." />}>
+      <DishPageContainer dishId={dishId} />
+    </Suspense>);
 };
+
+export default DishPage;

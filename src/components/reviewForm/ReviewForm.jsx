@@ -1,42 +1,57 @@
-import { useFormReview } from "./useFormReview.js";
-import { Counter } from "../counter/Counter";
-import { FormGroup } from "../formGroup/FormGroup.jsx";
-import { CustomButton } from "../button/CustomButton.jsx";
+import {FormGroup} from "../formGroup/FormGroup.jsx";
+import {CustomButton} from "../button/CustomButton.jsx";
+import {useActionState, useRef} from "react";
+import {IconMinus} from "../icons/IconMinus.jsx";
+import {IconPlus} from "../icons/IconPlus.jsx";
 import styles from "./ReviewForm.module.scss";
 
-export const ReviewForm = ({ onSubmit, disableSubmit }) => {
-  const { form, setText, setRatingDecrement, setRatingIncrement, setClear } = useFormReview();
-  const { text, rating } = form;
+export const ReviewForm = ({ onSubmit }) => {
+  const ratingRef = useRef();
+
+  const [formState, submitAction, isPending] = useActionState(
+    onSubmit,
+    {
+      text: "",
+      rating: 5,
+    }
+  );
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} action={submitAction}>
 
       <h3 className={styles.title}>Add review</h3>
 
       <FormGroup
         title="Text"
-        value={text}
+        defaultValue={formState.text}
         type="text"
-        onChange={setText} />
-
-      <Counter
-        count={rating}
-        onDecrement={setRatingDecrement}
-        onIncrement={setRatingIncrement}
+        name="text"
       />
 
-      <div className={styles.buttonGroup}>
-        <CustomButton
-          onClick={() => onSubmit({ text, rating })}
-          type={"button"}
-          disabled={disableSubmit}
-        >
-          Send
+      <div className={styles.formCounter}>
+        <CustomButton onClick={() => ratingRef.current.stepDown()} type="button" size="square" id='decrement-button'>
+          <IconMinus />
         </CustomButton>
+        <input
+          className={styles.formCounterValue}
+          type='number'
+          id='rating'
+          name='rating'
+          min={1}
+          max={5}
+          ref={ratingRef}
+          defaultValue={formState.rating}
+        />
+        <CustomButton onClick={() => ratingRef.current.stepUp()} type="button" size="square">
+          <IconPlus />
+        </CustomButton>
+      </div>
 
-        <CustomButton type={"button"} onClick={setClear}>Clear form</CustomButton>
+      <div className={styles.buttonGroup}>
+        <CustomButton type={"submit"} disabled={isPending}>Send</CustomButton>
+        <CustomButton type={"submit"} formAction={() => submitAction(null)}>Clear form</CustomButton>
       </div>
 
     </form>
-);
+  );
 };

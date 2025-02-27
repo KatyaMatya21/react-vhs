@@ -1,19 +1,12 @@
 "use client";
 import {RestaurantTabsButton} from "./RestaurantTabsButton.jsx";
 import Link from "next/link";
-import {useGetRestaurantsQuery} from "../../redux/services/api/api.js";
 import {usePathname} from "next/navigation";
 
-export const RestaurantTabsButtonContainer = ({ id }) => {
+export const RestaurantTabsButtonContainer = ({ item }) => {
   const pathname = usePathname();
 
-  const { restaurant } = useGetRestaurantsQuery(undefined, {
-    selectFromResult: ({ data }) => ({
-      restaurant: data?.find((restaurant) => restaurant.id === id),
-    }),
-  })
-
-  const { name } = restaurant || {};
+  const { name, id } = item || {};
 
   if (!name) {
     return null;

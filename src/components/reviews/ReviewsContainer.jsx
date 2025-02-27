@@ -1,56 +1,58 @@
 "use client";
-import { ReviewForm } from "../reviewForm/ReviewForm.jsx";
-import { use, useCallback } from "react";
-import { UserAuthContext } from "../authContext/UserAuthContext.js";
-import { Reviews } from "./Reviews.jsx";
-import { Loader } from "../loader/Loader.jsx";
-import { ErrorBlock } from "../errorBlock/ErrorBlock.jsx";
-import {
-  useAddReviewMutation,
-  useGetReviewsByRestaurantIdQuery,
-  useGetUsersQuery
-} from "../../redux/services/api/api.js";
+import {ReviewForm} from "../reviewForm/ReviewForm.jsx";
+import {use, useCallback, useOptimistic} from "react";
+import {UserAuthContext} from "../authContext/UserAuthContext.js";
+import {Reviews} from "./Reviews.jsx";
+import {usePathname} from "next/navigation";
+import {addReviewAction} from "../../app/actions/addReviewAction.js";
 
-export const ReviewsContainer = ({ restaurantId }) => {
-  const { data: dataReviews, isLoading: isLoadingReviews, isError: isErrorReviews } = useGetReviewsByRestaurantIdQuery(restaurantId);
-  const { data: dataUsers, isLoading: isLoadingUsers, isError: isErrorUsers } = useGetUsersQuery();
-
-  const [addReview, { isLoading }] = useAddReviewMutation();
-
+export const ReviewsContainer = ({ restaurantId, reviews }) => {
   const { loggedIn } = use(UserAuthContext);
 
-  const handleAddReview = useCallback(
-    (review) => {
-      addReview({
-        restaurantId,
-        review: {
-          ...review,
-          userId: loggedIn.userId,
-        },
-      });
-    },
-    [addReview, restaurantId, loggedIn.userId]
+  const pathname = usePathname();
+
+  const [optimisticReviews, addOptimisticReview] = useOptimistic(
+    reviews,
+    (currentState, optimisticValue) => [
+      ...currentState,
+      {
+        ...optimisticValue
+      }
+    ]
   );
 
+  const handleAddReview = useCallback(
+    async (state, formData) => {
+      if (formData === null) {
+        return {
+          text: "",
+          rating: 5,
+        };
+      }
 
-  if (isLoadingReviews || isLoadingUsers) {
-    return <Loader text="Loading restaurants..." />;
-  }
+      const text = formData.get("text");
+      const rating = formData.get("rating");
+      const review = { id: crypto.randomUUID(), text, rating, userId: loggedIn.userId };
 
-  if (isErrorReviews || isErrorUsers) {
-    return <ErrorBlock text="Error with data"/>;
-  }
+      addOptimisticReview(review);
+      await addReviewAction({ restaurantId, pathname, review });
 
-  if (!dataReviews?.length || !dataUsers?.length) {
+      return {
+        text: "",
+        rating: 5,
+      };
+    },
+    [addOptimisticReview, restaurantId, pathname, loggedIn.userId]
+  );
+
+  if (!optimisticReviews.length) {
     return null;
   }
 
-  const reviewsIds = dataReviews.map((item) => item.id);
-
   return (
     <>
-      <Reviews reviewsIds={reviewsIds} restaurantId={restaurantId} />
-      {loggedIn.isLogged && <ReviewForm onSubmit={handleAddReview} disableSubmit={isLoading} />}
+      <Reviews reviews={optimisticReviews} restaurantId={restaurantId} />
+      {loggedIn.isLogged && <ReviewForm onSubmit={handleAddReview} />}
     </>
   );
 };
