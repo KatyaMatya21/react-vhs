@@ -1,8 +1,14 @@
-import { DishCounter } from "../dishCounter/DishCounter.jsx";
+"use client";
 
-export const CartItem = ({ dishId, amount, dishName }) => {
+import {DishCounter} from "../dishCounter/DishCounter.jsx";
+import {useSelector} from "react-redux";
+import {selectAmountByItemId} from "../../redux/entities/cart/slice.js";
+
+export const CartItem = ({ dishId, dish }) => {
+  const amount = useSelector((state) => selectAmountByItemId(state, dishId));
+
   return <>
-    <div>{dishName} - <b>{amount}</b></div>
+    <div>{dish.name} - <b>{amount}</b></div>
     <DishCounter dishId={dishId} />
   </>
 };

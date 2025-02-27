@@ -1,4 +1,4 @@
-import {redirect} from 'next/navigation'
+import {redirect} from 'next/navigation';
 
 const RestaurantPage = async ({ params }) => {
   const { restaurantId } = await params;

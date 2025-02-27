@@ -1,7 +1,7 @@
 import styles from "./Logo.module.scss";
 import logo from "./duck.svg";
 import Link from "next/link";
-import Image from 'next/image'
+import Image from 'next/image';
 
 export const Logo = () => {
   return (

@@ -1,9 +1,9 @@
 "use client";
-import { Cart } from "./Cart.jsx";
-import { useSelector } from "react-redux";
-import { selectCartItemsIds } from "../../redux/entities/cart/slice";
+import {Cart} from "./cart.jsx";
+import {useSelector} from "react-redux";
+import {selectCartItemsIds} from "../../redux/entities/cart/slice";
 
-export const CartContainer = () => {
+export const CartContainer = ({ dishes }) => {
   const itemsIds = useSelector(selectCartItemsIds);
 
   if (!itemsIds.length) {
@@ -11,6 +11,6 @@ export const CartContainer = () => {
   }
 
   return (
-    <Cart itemsIds={itemsIds} />
+    <Cart itemsIds={itemsIds} dishes={dishes} />
   );
 };

@@ -1,3 +1,3 @@
-import {CartContainer} from "../../components/cart/CartContainer.jsx";
+import CartPage from "../../pages/CartPage.jsx";
 
-export default CartContainer;
+export default CartPage;

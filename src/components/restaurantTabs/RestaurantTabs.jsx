@@ -1,13 +1,13 @@
 import styles from "./RestaurantTabs.module.scss";
-import { RestaurantTabsButtonContainer } from "../restaurantTabsButton/RestaurantTabsButtonContainer.jsx";
+import {RestaurantTabsButtonContainer} from "../restaurantTabsButton/RestaurantTabsButtonContainer.jsx";
 
-export const RestaurantTabs = ({ restaurantIds }) => {
+export const RestaurantTabs = ({ restaurants }) => {
   return (
     <div className={styles.tabs}>
-      {restaurantIds.map((id) => (
+      {restaurants.map((item) => (
         <RestaurantTabsButtonContainer
-          key={id}
-          id={id}
+          key={item.id}
+          item={item}
         />
       ))}
     </div>

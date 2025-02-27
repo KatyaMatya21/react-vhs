@@ -1,13 +1,16 @@
-import {RestaurantInfo} from "../../../components/restaurantInfo/RestaurantInfo.jsx";
+import {RestaurantInfoLayout} from "../../../components/restaurantInfo/RestaurantInfoLayout.jsx";
+import {getRestaurants} from "../../../services/getRestaurants.js";
 
-const RestaurantLayout = async ({ params, children }) => {
+export const generateMetadata = async ({ params }) => {
   const { restaurantId } = await params;
 
-  return (
-    <RestaurantInfo restaurantId={restaurantId}>
-      {children}
-    </RestaurantInfo>
-  );
+  const restaurants = await getRestaurants();
+
+  const restaurant = restaurants.find(({ id }) => restaurantId === id);
+
+  return {
+    title: restaurant.name,
+  };
 };
 
-export default RestaurantLayout;
+export default RestaurantInfoLayout;

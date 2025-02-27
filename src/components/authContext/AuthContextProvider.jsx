@@ -1,6 +1,6 @@
 "use client";
-import { useCallback, useState } from "react";
-import { UserAuthContext } from "./UserAuthContext.js";
+import {useCallback, useState} from "react";
+import {UserAuthContext} from "./UserAuthContext.js";
 
 const MY_USER_ID = "dfb982e9-b432-4b7d-aec6-7f6ff2e6af54";
 

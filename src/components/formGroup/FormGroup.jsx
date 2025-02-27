@@ -1,13 +1,14 @@
 import styles from "./FormGroup.module.scss";
 
-export const FormGroup = ({ title, value, onChange, type }) => {
+export const FormGroup = ({ title, defaultValue, type, name }) => {
   return (
     <div className={styles.formGroup}>
-      <label>{title}</label>
+      <label htmlFor={title}>{title}</label>
       <input
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
+        id={title}
+        defaultValue={defaultValue}
         type={type}
+        name={name}
       />
     </div>
   );

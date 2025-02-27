@@ -3,6 +3,11 @@ const { nanoid } = require("nanoid");
 const { restaurants, products, reviews, users } = require("./mock");
 const { reply, getById, updateById } = require("./utils");
 
+router.get("/products", (req, res, next) => {
+  console.log("request");
+  reply(res, products);
+});
+
 router.get("/restaurants", (req, res, next) => {
   console.log("request");
   reply(res, restaurants);

@@ -1,6 +1,6 @@
-import { CustomButton } from "../button/CustomButton.jsx";
-import { IconPlus } from "../icons/IconPlus.jsx";
-import { IconMinus } from "../icons/IconMinus.jsx";
+import {CustomButton} from "../button/CustomButton.jsx";
+import {IconPlus} from "../icons/IconPlus.jsx";
+import {IconMinus} from "../icons/IconMinus.jsx";
 import styles from "./Counter.module.scss";
 
 export const Counter = ({ count, onDecrement, onIncrement }) => {
